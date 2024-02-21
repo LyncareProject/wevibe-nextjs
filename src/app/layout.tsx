@@ -1,12 +1,14 @@
+import HeaderSidebar from '@/components/Header&Sidebar';
 import SessionProvider from '@/components/SessionProvider';
 import '@/styles/globals.css';
-import type { Metadata } from 'next';
+import { Metadata } from 'next';
 import { getServerSession } from 'next-auth';
-import { Inter } from 'next/font/google';
+import { Noto_Sans_KR } from 'next/font/google';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Footer from '../components/Footer';
 
-const inter = Inter({ subsets: ['latin'] });
+const notoSans = Noto_Sans_KR({ subsets: ['latin'], weight: '400' });
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -22,19 +24,23 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <SessionProvider session={session}>
-          <main className="flex flex-1 flex-col">
-            {children}
-            <ToastContainer
-              position="top-center"
-              autoClose={3000}
-              closeOnClick
-              pauseOnFocusLoss={false}
-              theme="dark"
-            />
-          </main>
-        </SessionProvider>
+      <body className={notoSans.className}>
+        <div className="flex flex-col">
+          <SessionProvider session={session}>
+            <HeaderSidebar />
+            <main className="flex flex-1 flex-col overflow-y-auto">
+              {children}
+              <ToastContainer
+                position="top-center"
+                autoClose={3000}
+                closeOnClick
+                pauseOnFocusLoss={false}
+                theme="light"
+              />
+            </main>
+            <Footer />
+          </SessionProvider>
+        </div>
       </body>
     </html>
   );

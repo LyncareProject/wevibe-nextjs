@@ -3,8 +3,10 @@
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useRef } from 'react';
+import { FcGoogle } from 'react-icons/fc';
 import { MdEmail, MdKey } from 'react-icons/md';
 import { RiKakaoTalkFill } from 'react-icons/ri';
+import { SiNaver } from 'react-icons/si';
 import { toast } from 'react-toastify';
 import Button from '../Button';
 import IconInput from '../InputIcon';
@@ -42,11 +44,25 @@ const LoginForm = () => {
       </h2>
       <div className="mt-8">
         <button
-          className="flex w-full flex-row items-center justify-center gap-2 rounded-md bg-[#FEE500] px-5 py-3 font-medium text-slate-900"
+          className="flex w-full flex-row items-center justify-center gap-2 rounded-md bg-[#FEE500] px-5 py-3 font-medium text-slate-900 mt-5"
           onClick={() => signIn('kakao', { redirect: true, callbackUrl: '/' })}
         >
-          <RiKakaoTalkFill className='text-xl'/>
+          <RiKakaoTalkFill className="text-xl" />
           카카오로 1초 만에 시작하기
+        </button>
+        <button
+          className="flex w-full flex-row items-center justify-center gap-2 rounded-md bg-[#00C900] px-5 py-3 font-medium text-white mt-5"
+          onClick={() => signIn('naver', { redirect: true, callbackUrl: '/' })}
+        >
+          <SiNaver className="text-xl" />
+          네이버로 1초 만에 시작하기
+        </button>
+        <button
+          className="flex w-full flex-row items-center justify-center gap-2 rounded-md bg-[#fff] px-5 py-3 font-medium border border-slate-300 text-black mt-5"
+          onClick={() => signIn('google', { redirect: true, callbackUrl: '/' })}
+        >
+          <FcGoogle className="text-xl" />
+          구글로 1초 만에 시작하기
         </button>
       </div>
       <div>

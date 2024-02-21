@@ -8,6 +8,8 @@ declare module 'next-auth' {
     image: string;
     role: string;
     provider: string;
+    company: string;
+    rank: string;
     createdAt: Date;
     emailVerified: Date;
   }

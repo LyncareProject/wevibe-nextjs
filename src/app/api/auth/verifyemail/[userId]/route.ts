@@ -6,17 +6,11 @@ export async function PUT(
   { params }: { params: { userId: string } }
 ) {
   try {
-    const userId = parseInt(params.userId, 10);
-
-    if (isNaN(userId)) {
-      return new NextResponse(JSON.stringify({ message: 'Invalid_user_id' }), {
-        status: 400,
-      });
-    }
+    const { userId } = params;
 
     const user = await prisma.user.findUnique({
       where: {
-        id: userId,
+        userId,
       },
     });
     console.log('user : ', user);
@@ -35,7 +29,7 @@ export async function PUT(
 
     await prisma.user.update({
       where: {
-        id: userId,
+        userId,
       },
       data: {
         emailVerified: new Date(),

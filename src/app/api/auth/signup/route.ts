@@ -1,12 +1,13 @@
 import { verifyEmail } from '@/libs/nodemailer';
 import prisma from '@/libs/prisma';
 import bcrypt from 'bcryptjs';
+import { randomUUID } from 'crypto';
 import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { email, name, password } = body;
+    const { email, name, password, company, rank, funnel } = body;
 
     const user = await prisma.user.findUnique({
       where: {
@@ -29,15 +30,19 @@ export async function POST(request: Request) {
 
     const newUser = await prisma.user.create({
       data: {
+        userId: randomUUID(),
         email,
         name,
         password: hashedPassword,
+        company,
+        rank,
+        funnel,
       },
     });
 
     verifyEmail({
       email: newUser.email,
-      id: newUser.id,
+      id: newUser.userId,
     });
 
     return NextResponse.json(

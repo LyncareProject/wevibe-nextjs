@@ -17,13 +17,17 @@ const InputFormik: React.FC<InputFormikProps> = ({
   errors,
 }) => {
   return (
-    <div className='flex flex-col gap-4'>
-      {label && <label htmlFor={name} className='text-lg font-bold text-slate-300'>{label}</label>}
+    <div className="flex flex-col gap-1">
+      {label && (
+        <label htmlFor={name} className=" text-base font-bold text-black pt-5">
+          {label}
+        </label>
+      )}
       <Field
         name={name}
         type={type || 'text'}
         className={cn(
-          'block w-full rounded-lg border border-gray-300 bg-gray-50 px-5 py-4 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'
+          'block w-full rounded-lg border border-black bg-gray-50 px-5 py-2 text-sm text-gray-900 focus:border-black focus:ring-black'
         )}
       />
       {touched[name] && errors[name] ? (

@@ -23,8 +23,12 @@ model Post {
 
 model User {
   id              Int         @id @default(autoincrement())
+  userId          String      @unique @default(uuid())
   email           String      @unique
   name            String
+  company         String?
+  rank            String?
+  funnel          String?
   password        String
   image           String      @default("/images/noUser.png")
   role            Role        @default(USER)

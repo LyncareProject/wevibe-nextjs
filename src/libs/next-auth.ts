@@ -3,7 +3,9 @@ import bcrypt from 'bcryptjs';
 import { randomBytes, randomUUID } from 'crypto';
 import { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import GoogleProvider from 'next-auth/providers/google';
 import KakaoProvider from 'next-auth/providers/kakao';
+import NaverProvider from 'next-auth/providers/naver';
 import { v4 as uuidv4 } from 'uuid';
 import prisma from './prisma';
 
@@ -22,6 +24,14 @@ export const authOptions: NextAuthOptions = {
     KakaoProvider({
       clientId: process.env.KAKAO_CLIENT_ID!,
       clientSecret: process.env.KAKAO_CLIENT_SECRET!,
+    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    }),
+    NaverProvider({
+      clientId: process.env.NAVER_CLIENT_ID!,
+      clientSecret: process.env.NAVER_CLIENT_SECRET!,
     }),
     CredentialsProvider({
       name: 'Credentials',
@@ -78,11 +88,11 @@ export const authOptions: NextAuthOptions = {
           });
 
           // 이미 이메일 인증으로 가입한 경우 에러 처리
-          if (db_user && db_user.provider === 'credentials') {
-            throw new Error(
-              '이미 이메일 인증으로 가입된 계정입니다. 해당 계정으로 로그인해주세요.'
-            );
-          }
+          // if (db_user && db_user.provider === 'credentials') {
+          //   throw new Error(
+          //     '이미 이메일 인증으로 가입된 계정입니다. 해당 계정으로 로그인해주세요.'
+          //   );
+          // }
 
           if (!db_user) {
             const hashedPassword = await bcrypt.hash(uuidv4(), 12);
@@ -122,6 +132,8 @@ export const authOptions: NextAuthOptions = {
         token.image = user.image;
         token.provider = user.provider;
         token.role = user.role;
+        token.company = token.provider as string;
+        token.rank = token.rank as string;
       }
       return token;
     },
@@ -132,6 +144,8 @@ export const authOptions: NextAuthOptions = {
         session.user.image = token.profileImg as string;
         session.user.role = token.role as Role;
         session.user.provider = token.provider as string;
+        session.user.company = token.provider as string;
+        session.user.rank = token.rank as string;
       }
       return session;
     },

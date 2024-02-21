@@ -13,8 +13,8 @@ if (
 
 interface VerifyEmailProps {
   email: string;
-  id: number;
-};
+  id: string;
+}
 
 let transporter = nodemailer.createTransport({
   service: process.env.SYSTEM_EMAIL_SERVICE,

@@ -13,15 +13,16 @@ const SignUpForm = () => {
   return (
     <div className="flex min-h-screen items-center justify-center">
       <div className="mx-auto flex w-full max-w-[330px] flex-col gap-8 ">
-        <h1 className="bg-gradient-to-r from-purple-500 to-cyan-500 bg-clip-text py-4  text-6xl font-bold text-transparent">
-          Sign Up
-        </h1>
+        <h1 className="pt-5 text-center text-3xl">회원가입</h1>
         <Formik
           initialValues={{
             email: '',
             name: '',
             password: '',
             confirmPassword: '',
+            company: '',
+            rank: '',
+            funnel: '',
           }}
           validationSchema={signUpSchema}
           onSubmit={async (data, { setSubmitting, resetForm }) => {
@@ -31,6 +32,8 @@ const SignUpForm = () => {
                 email: data.email,
                 name: data.name,
                 password: data.password,
+                company: data.rank,
+                funnel: data.funnel,
               });
 
               if (response.status === 201) {
@@ -48,16 +51,16 @@ const SignUpForm = () => {
           }}
         >
           {({ isSubmitting, errors, touched }) => (
-            <Form className="flex flex-col gap-6">
+            <Form className="flex flex-col gap-2">
               <InputFormik
-                label="EMAIL"
+                label="이메일"
                 name={'email'}
                 type={'email'}
                 touched={touched}
                 errors={errors}
               />
               <InputFormik
-                label="NAME"
+                label="사용자명(이름)"
                 name={'name'}
                 type={'text'}
                 touched={touched}
@@ -65,21 +68,43 @@ const SignUpForm = () => {
               />
 
               <InputFormik
-                label="PASSWORD"
+                label="비밀번호"
                 name={'password'}
                 type={'password'}
                 touched={touched}
                 errors={errors}
               />
               <InputFormik
-                label="CONFIRM PASSWORD"
+                label="비밀번호 확인"
                 name={'confirmPassword'}
                 type={'password'}
                 touched={touched}
                 errors={errors}
               />
-              <Button type="submit" disabled={isSubmitting}>
-                Sign Up
+              <InputFormik
+                label="회사"
+                name={'company'}
+                type={'text'}
+                touched={touched}
+                errors={errors}
+              />
+              <InputFormik
+                label="직급"
+                name={'rank'}
+                type={'text'}
+                touched={touched}
+                errors={errors}
+              />
+              <InputFormik
+                label="가입 경로"
+                name={'funnel'}
+                type={'text'}
+                touched={touched}
+                errors={errors}
+              />
+
+              <Button type="submit" disabled={isSubmitting} className="my-5">
+                회원가입
               </Button>
             </Form>
           )}

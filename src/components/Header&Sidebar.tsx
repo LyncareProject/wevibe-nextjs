@@ -1,14 +1,9 @@
 'use client';
-import { User } from '@prisma/client';
 import { useState } from 'react';
 import Header from './Header';
 import Sidebar from './Sidebar';
 
-type HeaderSidebarProps = {
-  currentUser?: User | null;
-};
-
-const HeaderSidebar = ({ currentUser }: HeaderSidebarProps) => {
+const HeaderSidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   return (
     <div>

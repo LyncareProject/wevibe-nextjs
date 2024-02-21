@@ -1,28 +1,25 @@
 import prisma from '@/libs/prisma';
-import bcrypt from 'bcryptjs';
 import { getServerSession } from 'next-auth';
 import { NextResponse } from 'next/server';
 
-export default async function POST(request: Request) {
+export async function POST(request: Request) {
   try {
     const session = await getServerSession();
     const body = await request.json();
-    const { email, image, name, password, company, rank } = body;
+    const { email, image, name, company, rank } = body;
 
-    if (!session?.user.id) {
+    if (!session?.user.email) {
       return new NextResponse('Unauthorized', { status: 401 });
     }
-    const hashedPassword = await bcrypt.hash(password, 12);
 
     const updatedUser = await prisma.user.update({
       where: {
-        id: session.user.id,
+        email: session?.user.email,
       },
       data: {
         email,
         image,
         name,
-        password: hashedPassword,
         company,
         rank,
       },
@@ -32,5 +29,4 @@ export default async function POST(request: Request) {
   } catch (error) {
     return new NextResponse('Error', { status: 500 });
   }
-  return;
 }

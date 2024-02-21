@@ -1,4 +1,5 @@
 import { cn } from '@/utils/style';
+import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import { FC } from 'react';
 
@@ -8,6 +9,7 @@ type SidebarProps = {
 };
 
 const Sidebar: FC<SidebarProps> = ({ close, isOpen }) => {
+  const { status, data: session } = useSession();
   return (
     <div
       className={cn(
@@ -67,12 +69,25 @@ const Sidebar: FC<SidebarProps> = ({ close, isOpen }) => {
           <hr></hr>
 
           <ol className="py-5 text-center m-auto">
-            <li className="0 cursor-pointer p-2 hover:bg-slate-100">
-              <input type="button" value="로그인" name="로그인" />
-            </li>
-            <li className="0 cursor-pointer p-2 hover:bg-slate-100">
-              <input type="button" value="회원가입" name="회원가입" />
-            </li>
+            {!session ? (
+              <>
+                <li className="0 cursor-pointer p-2 hover:bg-slate-100">
+                  <input type="button" value="로그인" name="로그인" />
+                </li>
+                <li className="0 cursor-pointer p-2 hover:bg-slate-100">
+                  <input type="button" value="회원가입" name="회원가입" />
+                </li>
+              </>
+            ) : (
+              <>
+                <li className="0 cursor-pointer p-2 hover:bg-slate-100">
+                  {session.user.name} 님
+                </li>
+                <li className="0 cursor-pointer p-2 hover:bg-slate-100">
+                  <input type="button" value="로그아웃" name="signOut" />
+                </li>
+              </>
+            )}
           </ol>
         </nav>
       </header>

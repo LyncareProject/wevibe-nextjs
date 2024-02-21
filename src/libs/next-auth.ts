@@ -80,7 +80,7 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async signIn({ user, profile, account }) {
       try {
-        if (account?.provider === 'kakao') {
+        if (account?.provider === 'kakao' || 'google' || 'naver') {
           console.log('Kakao로 로그인 시도');
 
           const db_user = await prisma.user.findUnique({

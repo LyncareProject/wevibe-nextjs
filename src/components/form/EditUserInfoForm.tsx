@@ -1,6 +1,6 @@
 'use client';
 
-import { signUpSchema } from '@/libs/validations';
+import { editUserSchema } from '@/libs/validations';
 import axios from 'axios';
 import { Form, Formik } from 'formik';
 import { useRouter } from 'next/navigation';
@@ -22,7 +22,7 @@ const EditUserInfoForm = () => {
             company: '',
             rank: '',
           }}
-          validationSchema={signUpSchema}
+          validationSchema={editUserSchema}
           onSubmit={async (data, { setSubmitting, resetForm }) => {
             console.log(data);
             setSubmitting(true);
@@ -33,6 +33,7 @@ const EditUserInfoForm = () => {
                 company: data.company,
                 rank: data.rank,
               });
+              console.log(response);
 
               if (response.status === 200) {
                 toast.success('회원정보 수정 성공!');

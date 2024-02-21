@@ -12,6 +12,7 @@ type HeaderProps = {
 
 const Header: FC<HeaderProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const { status, data: session } = useSession();
+  console.log(session, status);
 
   return (
     <div className="w-full sm:w-[90%] sm:m-auto">

@@ -23,7 +23,7 @@ const Work = () => {
         loop={true}
         spaceBetween={50}
         slidesPerView={3}
-        className="sample-slider sample-slider"
+        className="sample-slider sample-slider lg:w-[1300px]"
         freeMode={true}
         resistance={true}
         resistanceRatio={0.85}

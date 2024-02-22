@@ -28,7 +28,6 @@ export default async function RootLayout({
         <div className="flex flex-col">
           <SessionProvider session={session}>
             <HeaderSidebar />
-            <main className="flex flex-1 flex-col overflow-y-auto">
               {children}
               <ToastContainer
                 position="top-center"
@@ -37,7 +36,6 @@ export default async function RootLayout({
                 pauseOnFocusLoss={false}
                 theme="light"
               />
-            </main>
             <Footer />
           </SessionProvider>
         </div>

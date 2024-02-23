@@ -84,6 +84,7 @@ const EditUserInfoForm = () => {
               />
 
               <Link href="/forgot-password">비밀번호 변경</Link>
+              <Link href="/forgot-password">회원 탈퇴</Link>
               <Button type="submit" disabled={isSubmitting} className="my-5">
                 정보수정
               </Button>

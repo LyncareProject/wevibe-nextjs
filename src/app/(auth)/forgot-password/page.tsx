@@ -8,7 +8,7 @@ import { Form, Formik } from 'formik';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 
-export default function forgotPassword() {
+export default function ForgotPassword() {
   const router = useRouter();
 
   return (

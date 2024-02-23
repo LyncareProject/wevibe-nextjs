@@ -1,5 +1,7 @@
-import HeaderSidebar from '@/components/Header&Sidebar';
+import Header from '@/components/Header';
 import SessionProvider from '@/components/SessionProvider';
+import Sidebar from '@/components/Sidebar';
+import Providers from '@/components/providers';
 import '@/styles/globals.css';
 import { Metadata } from 'next';
 import { getServerSession } from 'next-auth';
@@ -25,22 +27,25 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={notoSans.className}>
-        <div className="flex flex-col">
-          <SessionProvider session={session}>
-            <HeaderSidebar />
-            <main className="flex flex-1 flex-col overflow-y-auto">
-              {children}
-              <ToastContainer
-                position="top-center"
-                autoClose={3000}
-                closeOnClick
-                pauseOnFocusLoss={false}
-                theme="light"
-              />
-            </main>
-            <Footer />
-          </SessionProvider>
-        </div>
+        <Providers>
+          <div className="flex flex-col">
+            <SessionProvider session={session}>
+              <Sidebar />
+              <Header />
+              <main className="flex flex-1 flex-col overflow-y-auto">
+                {children}
+                <ToastContainer
+                  position="top-center"
+                  autoClose={3000}
+                  closeOnClick
+                  pauseOnFocusLoss={false}
+                  theme="light"
+                />
+              </main>
+              <Footer />
+            </SessionProvider>
+          </div>
+        </Providers>
       </body>
     </html>
   );

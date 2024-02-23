@@ -1,15 +1,13 @@
+'use client';
 import { cn } from '@/utils/style';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import { FC } from 'react';
+import { useSidebar } from './providers';
 
-type SidebarProps = {
-  close: () => void;
-  isOpen: boolean;
-};
-
-const Sidebar: FC<SidebarProps> = ({ close, isOpen }) => {
-  const { status, data: session } = useSession();
+const Sidebar: FC = () => {
+  const { data: session } = useSession();
+  const { isOpen, setIsOpen } = useSidebar();
   return (
     <div
       className={cn(

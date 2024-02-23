@@ -19,7 +19,7 @@ const Dev = () => {
             </p>
             <p className="px-0">
               <Image
-                src="/img/e.png"
+                src="/img/E.png"
                 alt="Next.js Logo"
                 width={63}
                 height={57}
@@ -27,7 +27,7 @@ const Dev = () => {
             </p>
             <p className="px-2">
               <Image
-                src="/img/v.png"
+                src="/img/V.png"
                 alt="Next.js Logo"
                 width={63}
                 height={0}

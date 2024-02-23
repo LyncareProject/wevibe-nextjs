@@ -3,6 +3,8 @@
 import { editUserSchema } from '@/libs/validations';
 import axios from 'axios';
 import { Form, Formik } from 'formik';
+import { useSession } from 'next-auth/react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import Button from '../Button';
@@ -10,6 +12,7 @@ import InputFormik from '../InputFormik';
 
 const EditUserInfoForm = () => {
   const router = useRouter();
+  const { data: session } = useSession();
 
   return (
     <div className="flex min-h-screen items-center justify-center">
@@ -17,10 +20,10 @@ const EditUserInfoForm = () => {
         <h1 className="pt-5 text-center text-3xl">회원정보 수정</h1>
         <Formik
           initialValues={{
-            email: '',
-            name: '',
-            company: '',
-            rank: '',
+            email: session?.user.email,
+            name: session?.user.name,
+            company: session?.user.company,
+            rank: session?.user.rank,
           }}
           validationSchema={editUserSchema}
           onSubmit={async (data, { setSubmitting, resetForm }) => {
@@ -52,16 +55,16 @@ const EditUserInfoForm = () => {
           {({ isSubmitting, errors, touched }) => (
             <Form className="flex flex-col gap-2">
               <InputFormik
-                label="이메일"
-                name={'email'}
-                type={'email'}
+                label="사용자명(이름)"
+                name={'name'}
+                type={'text'}
                 touched={touched}
                 errors={errors}
               />
               <InputFormik
-                label="사용자명(이름)"
-                name={'name'}
-                type={'text'}
+                label="이메일"
+                name={'email'}
+                type={'email'}
                 touched={touched}
                 errors={errors}
               />
@@ -80,6 +83,7 @@ const EditUserInfoForm = () => {
                 errors={errors}
               />
 
+              <Link href="/forgot-password">비밀번호 변경</Link>
               <Button type="submit" disabled={isSubmitting} className="my-5">
                 정보수정
               </Button>

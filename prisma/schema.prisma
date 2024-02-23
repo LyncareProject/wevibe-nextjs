@@ -35,8 +35,18 @@ model User {
   provider        String      @default("credentials")
   createdAt       DateTime    @default(now())
   emailVerified   DateTime?   @map("verifiedAt")
+  passwordResetTokens PasswordResetToken[]
 
   posts   Post[]
+}
+
+model PasswordResetToken {
+  id        Int       @id @default(autoincrement())
+  token     String    @unique
+  createdAt DateTime  @default(now())
+  resetAt   DateTime?
+  user      User      @relation(fields: [tokenUserId], references: [id])
+  tokenUserId Int
 }
 
 enum Role {

@@ -1,12 +1,30 @@
+import { authOptions } from '@/libs/next-auth';
 import prisma from '@/libs/prisma';
 import { getServerSession } from 'next-auth';
 import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
   try {
-    const session = await getServerSession();
+    const session = await getServerSession(authOptions);
     const body = await request.json();
     const { email, image, name, company, rank } = body;
+
+    const user = await prisma.user.findUnique({
+      where: {
+        email,
+      },
+    });
+
+    if (!user) {
+      return NextResponse.json(
+        {
+          message: '가입된 유저가 아닙니다.',
+        },
+        {
+          status: 404,
+        }
+      );
+    }
 
     if (!session?.user.email) {
       return new NextResponse('Unauthorized', { status: 401 });

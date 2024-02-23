@@ -1,18 +1,16 @@
+'use client';
 import { cn } from '@/utils/style';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Dispatch, FC, SetStateAction } from 'react';
+import { FC } from 'react';
 import noUser from '../../public/images/noUser.png';
+import { useSidebar } from './providers';
 
-type HeaderProps = {
-  isSidebarOpen: boolean;
-  setIsSidebarOpen: Dispatch<SetStateAction<boolean>>;
-};
-
-const Header: FC<HeaderProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
-  const { status, data: session } = useSession();
-  console.log(session, status);
+const Header: FC = () => {
+  const { isOpen, setIsOpen } = useSidebar();
+  const { data: session } = useSession();
+  console.log(session);
 
   return (
     <div className="w-full sm:w-[90%] sm:m-auto">
@@ -30,19 +28,19 @@ const Header: FC<HeaderProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
             </p>
             <ul className=" flex justify-around  py-5 lg:hidden ">
               <li className="px-3 cursor-pointer">
-                <a href="#Team_dev">Team DEV</a>
+                <a href="/#Team_dev">Team DEV</a>
               </li>
               <li className="px-3">|</li>
               <li className="px-3">
-                <a href="#viber_X">viber X</a>
+                <a href="/#viber_X">viber X</a>
               </li>
               <li className="px-3">|</li>
               <li className="px-3">
-                <a href="#Ai_lawline">문서작성 AI 로라인</a>
+                <a href="/#Ai_lawline">문서작성 AI 로라인</a>
               </li>
               <li className="px-3">|</li>
               <li className="px-3">
-                <a href="#WORKS">Works</a>
+                <a href="/#WORKS">Works</a>
               </li>
               <li className="px-3">|</li>
               <li className="px-3">프로젝트 의뢰하기</li>
@@ -51,7 +49,7 @@ const Header: FC<HeaderProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
             <ol
               className={cn(
                 'flex justify-between gap-4  py-5 lg:w-[150px] sm:mr-4',
-                isSidebarOpen && 'hidden'
+                isOpen && 'hidden'
               )}
             >
               {!session ? (
@@ -84,11 +82,9 @@ const Header: FC<HeaderProps> = ({ isSidebarOpen, setIsSidebarOpen }) => {
             <Image
               id="Sidibar_boutton"
               className=" hidden h-12 mb-2   p-2 rounded-md  border-2 border-black box-border cursor-pointer lg:block sm:mr-4 "
-              src={
-                !isSidebarOpen ? '/img/hamburger_.png' : '/img/sidebarClose.png'
-              }
+              src={!isOpen ? '/img/hamburger_.png' : '/img/sidebarClose.png'}
               alt="Next.js Logo"
-              onClick={() => setIsSidebarOpen((open) => !open)}
+              onClick={() => setIsOpen((open) => !open)}
               width={50}
               height={5}
             />

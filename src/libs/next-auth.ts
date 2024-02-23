@@ -49,7 +49,7 @@ export const authOptions: NextAuthOptions = {
         if (!existUser) throw new Error('해당 이메일로 가입한 적이 없습니다.');
 
         if (existUser.provider !== 'credentials')
-          throw new Error('카카오 로그인으로 회원가입한 회원입니다.');
+          throw new Error('소셜 로그인으로 회원가입한 회원입니다.');
 
         const passwordMatch = await bcrypt.compare(
           credentials!.password,
@@ -112,7 +112,6 @@ export const authOptions: NextAuthOptions = {
             user.provider = newUser.provider;
             return true;
           }
-
           user.id = db_user.id;
           user.image = db_user.image;
           user.role = db_user.role;
@@ -132,8 +131,8 @@ export const authOptions: NextAuthOptions = {
         token.image = user.image;
         token.provider = user.provider;
         token.role = user.role;
-        token.company = token.provider as string;
-        token.rank = token.rank as string;
+        token.company = token.company;
+        token.rank = token.rank;
       }
       return token;
     },
@@ -144,7 +143,7 @@ export const authOptions: NextAuthOptions = {
         session.user.image = token.profileImg as string;
         session.user.role = token.role as Role;
         session.user.provider = token.provider as string;
-        session.user.company = token.provider as string;
+        session.user.company = token.company as string;
         session.user.rank = token.rank as string;
       }
       return session;

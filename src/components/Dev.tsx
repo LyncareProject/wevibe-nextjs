@@ -1,14 +1,15 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Dev = () => {
   return (
     <div>
       <div
         id="dev"
-        className=" bg-[url('/img/h_bg.png')]  w-full  max-h-fit bg-cover bg-center  bg-no-repeat top-0 py-24 lg:px-6 mt-[-152px]"
+        className=" top-0  mt-[-152px]  max-h-fit w-full bg-[url('/img/h_bg.png')]  bg-cover bg-center bg-no-repeat py-24 lg:px-6"
       >
-        <div className="relative max-w-[1000px] m-auto top-0 align-bottom object-bottom    pt-30   ">
-          <div className=" flex max-h-96 mt-80  sm:mt-40">
+        <div className="relative top-0 m-auto max-w-[1000px] object-bottom pt-28 align-bottom">
+          <div className=" mt-80 flex max-h-96  sm:mt-40">
             <p className="px-0">
               <Image
                 src="/img/D.png"
@@ -46,14 +47,17 @@ const Dev = () => {
             <br />
             새로운 경험과 가능성을 모색합니다.
           </p>
-          <button className="bg-[#bdc7ff] font-bold text-l mt-6 px-6 py-4 rounded-xl ">
+          <Link
+            href={'/project'}
+            className="mt-6 inline-block rounded-xl bg-[#bdc7ff] px-6 py-4 text-lg font-bold "
+          >
             프로젝트 의뢰하기
-          </button>
+          </Link>
         </div>
       </div>
 
       <div className="w-full">
-        <p className="w-[55%] m-auto lg:w-[95%] ">
+        <p className="m-auto w-[55%] lg:w-[95%] ">
           <Image
             className="m-auto p-6 "
             src="/img/d,e,a.png"

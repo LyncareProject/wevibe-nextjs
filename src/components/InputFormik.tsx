@@ -19,7 +19,7 @@ const InputFormik: React.FC<InputFormikProps> = ({
   return (
     <div className="flex flex-col gap-1">
       {label && (
-        <label htmlFor={name} className=" text-base font-bold text-black pt-5">
+        <label htmlFor={name} className="pt-5 text-base font-bold text-black">
           {label}
         </label>
       )}

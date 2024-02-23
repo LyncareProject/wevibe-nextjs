@@ -13,10 +13,10 @@ const Header: FC = () => {
   console.log(session);
 
   return (
-    <div className="w-full sm:w-[90%] sm:m-auto">
-      <div className="relative flex flex-col justify-between py-6 justify-items-center m-auto h-32">
-        <header className="h-32 z-10">
-          <nav className="flex justify-around justify-items-center max-w-[1100px] m-auto  ">
+    <div className="w-full sm:m-auto sm:w-[90%]">
+      <div className="relative m-auto flex h-32 flex-col justify-between justify-items-center py-6">
+        <header className="z-10 h-32">
+          <nav className="m-auto flex max-w-[1100px] justify-around justify-items-center  ">
             <p className="w-[10%] cursor-pointer lg:w-[60%]">
               <Image
                 src="/img/Logoimg.png"
@@ -27,7 +27,7 @@ const Header: FC = () => {
               />
             </p>
             <ul className=" flex justify-around  py-5 lg:hidden ">
-              <li className="px-3 cursor-pointer">
+              <li className="cursor-pointer px-3">
                 <a href="/#Team_dev">Team DEV</a>
               </li>
               <li className="px-3">|</li>
@@ -48,7 +48,7 @@ const Header: FC = () => {
 
             <ol
               className={cn(
-                'flex justify-between gap-4  py-5 lg:w-[150px] sm:mr-4',
+                'flex justify-between gap-4  py-5 sm:mr-4 lg:w-[150px]',
                 isOpen && 'hidden'
               )}
             >
@@ -63,7 +63,7 @@ const Header: FC = () => {
               ) : (
                 <>
                   <Image
-                    className="w-[25px] h-[25px] rounded-full"
+                    className="size-[25px] rounded-full"
                     src={session.user.image || noUser}
                     width={25}
                     height={25}
@@ -81,7 +81,7 @@ const Header: FC = () => {
 
             <Image
               id="Sidibar_boutton"
-              className=" hidden h-12 mb-2   p-2 rounded-md  border-2 border-black box-border cursor-pointer lg:block sm:mr-4 "
+              className=" mb-2 box-border hidden   h-12 cursor-pointer  rounded-md border-2 border-black p-2 sm:mr-4 lg:block "
               src={!isOpen ? '/img/hamburger_.png' : '/img/sidebarClose.png'}
               alt="Next.js Logo"
               onClick={() => setIsOpen((open) => !open)}

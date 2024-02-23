@@ -9,9 +9,9 @@ const Work = () => {
   return (
     <>
       <div id="WORKS" className="mt-16 lg:px-6 ">
-        <div className="max-w-[1000px] m-auto">
+        <div className="m-auto max-w-[1000px]">
           <h3 className="text-4xl font-semibold ">WORKS</h3>
-          <p className="text-xl mt-1 pb-16">
+          <p className="mt-1 pb-16 text-xl">
             보다 입체적인 솔루션과 디자인을 제안합니다
           </p>
         </div>
@@ -24,7 +24,7 @@ const Work = () => {
         loop={true}
         spaceBetween={50}
         slidesPerView={3}
-        className="sample-slider sample-slider"
+        className="sample-slider"
         freeMode={true}
         resistance={true}
         resistanceRatio={0.85}

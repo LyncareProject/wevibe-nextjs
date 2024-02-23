@@ -27,3 +27,18 @@ body {
 .sample-slider .swiper-wrapper {
   transition-timing-function: linear;
 }
+
+/* Chrome, Safari, Opera 등 */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Firefox */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+/* IE, Edge */
+.no-scrollbar {
+  -ms-overflow-style: none;
+}

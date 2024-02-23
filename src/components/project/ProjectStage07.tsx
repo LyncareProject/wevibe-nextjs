@@ -46,7 +46,7 @@ const ProjectStage07: React.FC<ProjectStage07Props> = ({ stage }) => {
   const isNextButtonDisabled = false;
 
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex w-full flex-col gap-12 overflow-y-auto px-16 py-10">
       <div className="flex w-full flex-col gap-4">
         <OptionTitle title={'협업 인력 구성'} necessary={true} />
         <OptionSubtitle

@@ -5,10 +5,10 @@ const Team = () => {
     <>
       {/* Meet Our Team */}
       <div id="Team_dev">
-        <h2 className="w-full m-auto text-3xl font-bold max-w-[1000px] mt-8 mb-6 lg:px-6">
+        <h2 className="m-auto mb-6 mt-8 w-full max-w-[1000px] text-3xl font-bold lg:px-6">
           Meet Our Team
         </h2>
-        <ul className="flex m-auto w-full justify-center md:flex-wrap ">
+        <ul className="m-auto flex w-full justify-center md:flex-wrap ">
           <li>
             {' '}
             <Image

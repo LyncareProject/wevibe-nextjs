@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { createJSONStorage, devtools, persist } from 'zustand/middleware';
 
-interface ProjectRequestState {
+export interface ProjectRequestState {
   projectCategory: string[];
   projectField: string[];
   projectProgressClassification: string;

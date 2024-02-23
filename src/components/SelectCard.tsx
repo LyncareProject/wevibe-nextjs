@@ -18,9 +18,9 @@ const SelectCard: React.FC<SelectCardProps> = ({
     <div
       className={cn(
         'cursor-pointer shadow-lg',
-        'rounded-md py-6 px-8 border border-slate-200',
+        'rounded-md border border-slate-200 px-8 py-6',
         'flex flex-col items-center justify-center gap-4',
-        'hover:opacity-70 ease-in-out transition-opacity',
+        'transition-opacity ease-in-out hover:opacity-70',
         className
       )}
       onClick={onClick}

@@ -39,26 +39,26 @@ const LoginForm = () => {
   return (
     /* eslint-disable-next-line */
     <div className="flex w-full max-w-[330px] mx-auto flex-col gap-4 min-h-screen z-20 py-28 lg:py-40">
-      <h2 className="mt-4 text-xl font-bold text-center leading-8 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500">
+      <h2 className="mt-4 bg-gradient-to-r from-purple-500 to-cyan-500 bg-clip-text text-center text-xl font-bold leading-8 text-transparent">
         Sign up and take away various programming information.
       </h2>
       <div className="mt-8">
         <button
-          className="flex w-full flex-row items-center justify-center gap-2 rounded-md bg-[#FEE500] px-5 py-3 font-medium text-slate-900 mt-5"
+          className="mt-5 flex w-full flex-row items-center justify-center gap-2 rounded-md bg-[#FEE500] px-5 py-3 font-medium text-slate-900"
           onClick={() => signIn('kakao', { redirect: true, callbackUrl: '/' })}
         >
           <RiKakaoTalkFill className="text-xl" />
           카카오로 1초 만에 시작하기
         </button>
         <button
-          className="flex w-full flex-row items-center justify-center gap-2 rounded-md bg-[#00C900] px-5 py-3 font-medium text-white mt-5"
+          className="mt-5 flex w-full flex-row items-center justify-center gap-2 rounded-md bg-[#00C900] px-5 py-3 font-medium text-white"
           onClick={() => signIn('naver', { redirect: true, callbackUrl: '/' })}
         >
           <SiNaver className="text-xl" />
           네이버로 1초 만에 시작하기
         </button>
         <button
-          className="flex w-full flex-row items-center justify-center gap-2 rounded-md bg-[#fff] px-5 py-3 font-medium border border-slate-300 text-black mt-5"
+          className="mt-5 flex w-full flex-row items-center justify-center gap-2 rounded-md border border-slate-300 bg-[#fff] px-5 py-3 font-medium text-black"
           onClick={() => signIn('google', { redirect: true, callbackUrl: '/' })}
         >
           <FcGoogle className="text-xl" />

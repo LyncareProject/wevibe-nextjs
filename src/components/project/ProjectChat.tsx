@@ -1,4 +1,4 @@
-"use client"
+'use client';
 
 import { cn } from '@/utils/style';
 import { Message, useChat } from 'ai/react';
@@ -13,10 +13,18 @@ interface ProjectChat {
 
 const ProjectChat = () => {
   const chatContainerRef = useRef<HTMLDivElement | null>(null);
-  const [initialMessage, setInitialMessage] = useState<Message[]>([]);
+  const [initialMessage, setInitialMessage] = useState<Message[]>([
+    {
+      id: 'assistant',
+      content:
+        '안녕하세요. 웹앱 설계사 위봇입니다. 웹앱에 관련된 모든 걸 물어보세요.',
+      role: 'assistant',
+    },
+  ]);
   const { messages, input, handleInputChange, handleSubmit, isLoading } =
     useChat({
       api: '/api/chat/project',
+      initialMessages: initialMessage,
     });
   return (
     <div

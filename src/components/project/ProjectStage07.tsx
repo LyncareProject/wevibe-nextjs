@@ -16,9 +16,10 @@ import OptionTitle from './OptionTitle';
 import ProjectStageButtonWrap from './ProjectStageButtonWrap';
 
 interface ProjectStage07Props {
+  userId: string;
   stage: number;
 }
-const ProjectStage07: React.FC<ProjectStage07Props> = ({ stage }) => {
+const ProjectStage07: React.FC<ProjectStage07Props> = ({ userId, stage }) => {
   const {
     collaborationTeamComposition,
     isCollaborationTeamComposition,
@@ -43,7 +44,9 @@ const ProjectStage07: React.FC<ProjectStage07Props> = ({ stage }) => {
     updateState: state.updateState,
     toggleArrayItem: state.toggleArrayItem,
   }));
-  const isNextButtonDisabled = false;
+  const isNextButtonDisabled =
+    (!collaborationTeamComposition && !isCollaborationTeamComposition) ||
+    !itProjectManagementExperience;
 
   return (
     <div className="flex w-full flex-col gap-12 overflow-y-auto px-16 py-10">
@@ -129,7 +132,7 @@ const ProjectStage07: React.FC<ProjectStage07Props> = ({ stage }) => {
         ))}
       </div>
       <div className="flex w-full flex-col gap-4">
-        <OptionTitle title={'프로젝트 우선순위'} necessary={true} />
+        <OptionTitle title={'프로젝트 우선순위'} necessary={false} />
         <OptionSubtitle
           subtitle={
             '프로젝트 우선순위를 파트너에게 알려주시면, 파트너가 우선순위를 고려하여 지원합니다.'
@@ -199,6 +202,7 @@ const ProjectStage07: React.FC<ProjectStage07Props> = ({ stage }) => {
         </div>
       </div>
       <ProjectStageButtonWrap
+        userId={userId}
         stage={stage}
         isNextButtonDisabled={isNextButtonDisabled}
       />

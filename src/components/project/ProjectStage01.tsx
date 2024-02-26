@@ -23,7 +23,8 @@ const ProjectStage01: React.FC<ProjectStage01Props> = ({ stage }) => {
     .flatMap((field) => field.selects)
     .filter((value, index, self) => self.indexOf(value) === index);
 
-  const isNextButtonDisabled = false;
+  const isNextButtonDisabled =
+    projectCategory.length === 0 || projectField.length === 0;
 
   return (
     <div className="flex w-full flex-col gap-12 overflow-y-auto px-16 py-10">

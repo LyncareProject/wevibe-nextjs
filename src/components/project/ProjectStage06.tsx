@@ -6,6 +6,7 @@ import {
 } from '@/libs/constants/project';
 import useProjectRequestStore from '@/libs/store/projectRequestStore';
 import { cn } from '@/utils/style';
+import { useEffect } from 'react';
 import {
   MdOutlineCheckBox,
   MdOutlineCheckBoxOutlineBlank,
@@ -43,7 +44,11 @@ const ProjectStage06: React.FC<ProjectStage06Props> = ({ stage }) => {
     toggleArrayItem: state.toggleArrayItem,
   }));
 
-  const isNextButtonDisabled = false;
+  useEffect(() => {
+    updateState('applicationDeadline', new Date());
+  }, []);
+
+  const isNextButtonDisabled = !isFundingAvailable;
 
   return (
     <div className="flex w-full flex-col gap-12 overflow-y-auto px-16 py-10">

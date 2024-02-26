@@ -26,7 +26,8 @@ const ProjectStage03: React.FC<ProjectStage03Props> = ({ stage }) => {
   }));
 
   console.log(relatedTechnologies);
-  const isNextButtonDisabled = false;
+  const isNextButtonDisabled =
+    projectTitle.length === 0 || detailedTaskDescription.length === 0;
 
   return (
     <div className="flex w-full flex-col gap-12 overflow-y-auto px-16 py-10">
@@ -45,9 +46,6 @@ const ProjectStage03: React.FC<ProjectStage03Props> = ({ stage }) => {
       <ProjectInput
         title={'상세 업무 내용'}
         necessary={true}
-        textarea={
-          '<프로젝트의 현재 상황>\n예시) 프로젝트 목적, 타겟 고객, 진행 계획 등\n\n<상세한 업무 내용>\n예시) 상품의 용도, 작업 분량, 필요한 조건 등\n\n<참고자료 / 유의사항>\n예시) 참고 제품 등'
-        }
         desc={'5,000자 이내로 작성해주세요.'}
         value={detailedTaskDescription}
         onChange={(text) => {
@@ -55,7 +53,7 @@ const ProjectStage03: React.FC<ProjectStage03Props> = ({ stage }) => {
         }}
       />
       <div className="flex w-full flex-col gap-4">
-        <OptionTitle title={'관련 기술'} necessary={true} />
+        <OptionTitle title={'관련 기술'} necessary={false} />
         <OptionSubtitle
           subtitle={
             '파트너가 전문 기술로 프로젝트를 찾고 지원할 수 있도록 프로젝트와 관련된 기술을 입력해주세요.'

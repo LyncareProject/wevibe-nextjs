@@ -13,10 +13,10 @@ const Header: FC = () => {
   console.log(session);
 
   return (
-    <div className="w-full sm:w-[90%] sm:m-auto">
-      <div className="flex flex-col justify-between py-6 justify-items-center m-auto h-32">
-        <header className="z-10 h-32">
-          <nav className="m-auto flex max-w-[1100px] justify-around justify-items-center  ">
+    <div className="w-full sm:w-[90%]   sm:m-auto "  >
+    <div className=" flex flex-col justify-between py-6 justify-items-center m-auto h-32">
+      <header className="h-32 z-10">
+          <nav className="flex justify-around justify-items-center max-w-[1100px] m-auto  ">
             <p className="w-[10%] cursor-pointer lg:w-[60%] sm:w-[50%]">
             <Link href='./'>
               <Image

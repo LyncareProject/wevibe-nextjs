@@ -36,7 +36,7 @@ const ProjectStage02: React.FC<ProjectStage02Props> = ({ stage }) => {
     toggleArrayItem: state.toggleArrayItem,
   }));
 
-  const isNextButtonDisabled = false;
+  const isNextButtonDisabled = projectProgressClassification.length === 0 || planningStatus.length === 0 
 
   return (
     <div className="flex w-full flex-col gap-12 overflow-y-auto px-16 py-10">

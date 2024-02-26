@@ -23,7 +23,7 @@ const ProjectIntro: React.FC = () => {
     // 컴포넌트가 마운트 되자마자 실행되는 로직
     const checkData = async () => {
       // 데이터 체크 로직이 여기에 위치
-      if (pageNumber !== 1 || projectCategory.length > 0) {
+      if (pageNumber !== 1 || projectCategory.length !== 0) {
         const confirmLeave = window.confirm('이전에 입력한 데이터를 불러오시겠습니까?');
         if (!confirmLeave) {
           resetPage();

@@ -98,6 +98,7 @@ export const authOptions: NextAuthOptions = {
             const hashedPassword = await bcrypt.hash(uuidv4(), 12);
             const newUser = await prisma.user.create({
               data: {
+                userId : randomUUID(),
                 email: user.email,
                 name: user.name,
                 password: hashedPassword,
@@ -107,12 +108,14 @@ export const authOptions: NextAuthOptions = {
             });
 
             user.id = newUser.id;
+            user.userId = newUser.userId;
             user.image = newUser.image;
             user.role = newUser.role;
             user.provider = newUser.provider;
             return true;
           }
           user.id = db_user.id;
+          user.userId = db_user.userId;
           user.image = db_user.image;
           user.role = db_user.role;
           user.provider = db_user.provider;
@@ -128,6 +131,7 @@ export const authOptions: NextAuthOptions = {
       // console.log('jwt callback :', { token, user });
       if (user) {
         token.id = user.id;
+        token.userId = user.userId;
         token.image = user.image;
         token.provider = user.provider;
         token.role = user.role;
@@ -140,6 +144,7 @@ export const authOptions: NextAuthOptions = {
       // console.log('session callback :', { session, token });
       if (session.user) {
         session.user.id = token.id as number;
+        session.user.userId = token.userId as string;
         session.user.image = token.profileImg as string;
         session.user.role = token.role as Role;
         session.user.provider = token.provider as string;

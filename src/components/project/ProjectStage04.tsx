@@ -1,5 +1,6 @@
 import useProjectRequestStore from '@/libs/store/projectRequestStore';
 import { cn } from '@/utils/style';
+import { useEffect } from 'react';
 import { FaWonSign } from 'react-icons/fa';
 import {
   MdOutlineCheckBox,
@@ -43,7 +44,12 @@ const ProjectStage04: React.FC<ProjectStage04Props> = ({ stage }) => {
     toggleArrayItem: state.toggleArrayItem,
   }));
 
-  const isNextButtonDisabled = false;
+  useEffect(() => {
+    updateState('expectedStartDate', new Date());
+  }, []);
+  
+  const isNextButtonDisabled =
+    !availableBudget || !expectedStartDate || expectedDuration.length === 0;
 
   return (
     <div className="flex w-full flex-col gap-12 overflow-y-auto px-16 py-10">

@@ -1,4 +1,5 @@
 import Header from '@/components/Header';
+import ProjectAlertBar from '@/components/ProjectAlertBar';
 import SessionProvider from '@/components/SessionProvider';
 import Sidebar from '@/components/Sidebar';
 import Providers from '@/components/providers';
@@ -30,6 +31,7 @@ export default async function RootLayout({
         <Providers>
           <div className="flex flex-col">
             <SessionProvider session={session}>
+              <ProjectAlertBar />
               <Sidebar />
               <Header />
               <main className="flex flex-1 flex-col overflow-y-auto">

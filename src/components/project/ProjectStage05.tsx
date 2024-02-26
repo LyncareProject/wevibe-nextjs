@@ -39,7 +39,7 @@ const ProjectStage05: React.FC<ProjectStage05Props> = ({ stage }) => {
     toggleArrayItem: state.toggleArrayItem,
   }));
 
-  const isNextButtonDisabled = false;
+  const isNextButtonDisabled = preMeetingMethod.length === 0 || !meetingMethod || !meetingFrequency || !clientLocationCity || !clientLocationDistrict;
 
   return (
     <div className="flex w-full flex-col gap-12 overflow-y-auto px-16 py-10">

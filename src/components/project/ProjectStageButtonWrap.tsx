@@ -5,7 +5,9 @@ import useProjectRequestStore, {
 import { cn } from '@/utils/style';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import { toast } from 'react-toastify';
 interface StageButtonProps {
+  userId?: string;
   stage: number;
   isNextButtonDisabled: boolean;
 }
@@ -32,15 +34,20 @@ const selectNonFunctionState = (
 };
 
 const ProjectStageButtonWrap: React.FC<StageButtonProps> = ({
+  userId,
   stage,
   isNextButtonDisabled,
 }) => {
   const router = useRouter();
   const nonFunctionState = useProjectRequestStore(selectNonFunctionState);
-  const { decreasePage, increasePage } = useProjectPageStore((state) => ({
-    decreasePage: state.decreasePage,
-    increasePage: state.increasePage,
-  }));
+  const resetStore = useProjectRequestStore((state) => state.resetStore);
+  const { decreasePage, increasePage, resetPage } = useProjectPageStore(
+    (state) => ({
+      decreasePage: state.decreasePage,
+      increasePage: state.increasePage,
+      resetPage: state.resetPage,
+    })
+  );
   return (
     <div className="flex justify-between">
       <button
@@ -57,7 +64,7 @@ const ProjectStageButtonWrap: React.FC<StageButtonProps> = ({
       >
         이전
       </button>
-      {stage === 7 ? (
+      {stage === 7 && userId ? (
         <button
           className={cn(
             'rounded-full px-6 py-2 text-white',
@@ -67,7 +74,18 @@ const ProjectStageButtonWrap: React.FC<StageButtonProps> = ({
             'transition-opacity duration-300 ease-in-out'
           )}
           onClick={async () => {
-            await axios.post('/api/project', { nonFunctionState });
+            try {
+              const response = await axios.post('/api/project', {
+                userId,
+                nonFunctionState,
+              });
+              if (response.status === 200) {
+                toast.success('프로젝트 의뢰가 완료되었습니다');
+                router.push('/');
+                resetPage();
+                resetStore();
+              }
+            } catch (error) {}
           }}
           disabled={isNextButtonDisabled}
           aria-disabled={isNextButtonDisabled}

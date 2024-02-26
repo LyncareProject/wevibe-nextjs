@@ -27,7 +27,7 @@ const Sidebar: FC = () => {
           />
         </button>
       </div>
-      <header className="z-20 m-auto">
+      <header className=" z-100 m-auto">
         <nav className="m-auto w-full">
           <p className="m-auto cursor-pointer">
             <Image

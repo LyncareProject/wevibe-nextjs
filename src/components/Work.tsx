@@ -17,22 +17,23 @@ const Work = () => {
         </div>
       </div>
 
+      <div className='overflow-hidden'>
       <Swiper
         modules={[Autoplay]}
         autoplay={{ delay: 0, disableOnInteraction: false }}
-        speed={10000}
+        speed={8000}
         loop={true}
         spaceBetween={50}
         slidesPerView={3}
-        className="sample-slider"
+        className="sample-slider md:min-w-[1200px] "
         freeMode={true}
         resistance={true}
         resistanceRatio={0.85}
       >
         <SwiperSlide className="swiper-slide">
-          <Image
+          <Image 
             src="/img/works2.png"
-            width={300}
+            width={700}
             height={100}
             alt="abraxas 사이트제작"
           />
@@ -40,7 +41,7 @@ const Work = () => {
         <SwiperSlide className="swiper-slide">
           <Image
             src="/img/works1.png"
-            width={300}
+            width={700}
             height={100}
             alt="zenian 사이트제작"
           />
@@ -48,7 +49,7 @@ const Work = () => {
         <SwiperSlide className="swiper-slide">
           <Image
             src="/img/works3.png"
-            width={300}
+            width={700}
             height={100}
             alt="법과사람들 사이트제작"
           />
@@ -56,15 +57,16 @@ const Work = () => {
         <SwiperSlide className="swiper-slide">
           <Image
             src="/img/works5.png"
-            width={300}
+            width={700}
             height={100}
             alt="아브락삭스 끼브리자 디자인"
+            
           />
         </SwiperSlide>
         <SwiperSlide className="swiper-slide">
           <Image
             src="/img/works8.png"
-            width={300}
+            width={700}
             height={100}
             alt="우리동네카센터 제작"
           />
@@ -72,7 +74,7 @@ const Work = () => {
         <SwiperSlide className="swiper-slide">
           <Image
             src="/img/works7.png"
-            width={300}
+            width={700}
             height={100}
             alt="디블럭,우리동네카센터 사이트제작"
           />
@@ -80,7 +82,7 @@ const Work = () => {
         <SwiperSlide className="swiper-slide">
           <Image
             src="/img/works6.png"
-            width={300}
+            width={700}
             height={100}
             alt="법무법인정곡 사이트제작"
           />
@@ -88,12 +90,13 @@ const Work = () => {
         <SwiperSlide className="swiper-slide">
           <Image
             src="/img/works4.png"
-            width={300}
+            width={700}
             height={100}
             alt="디블럭필터 디자인"
           />
         </SwiperSlide>
       </Swiper>
+      </div>
     </>
   );
 };

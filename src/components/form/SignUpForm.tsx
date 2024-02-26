@@ -3,15 +3,19 @@
 import { signUpSchema } from '@/libs/validations';
 import axios from 'axios';
 import { Form, Formik } from 'formik';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import Button from '../Button';
 import InputFormik from '../InputFormik';
 
+
 const SignUpForm = () => {
   const router = useRouter();
   return (
-    <div className="flex min-h-screen items-center justify-center">
+    <div id="dev"  className=" bg-[url('/img/h_bg.png')]  w-full h-auto  bg-cover bg-center  bg-no-repeat top-0 py-12 lg:px-6 mt-[-152px] mb-[-30px]">
+    <div className=' w-[60%] m-auto bg-white h-auto pb-8 mb-[60px]  rounded-3xl   shadow-lg drop-shadow-sm '> 
+    <div className="flex px-12 max-w-[550px]  mx-auto flex-col gap-4 py-8 mt-[155px] ">
       <div className="mx-auto flex w-full max-w-[330px] flex-col gap-8 ">
         <h1 className="pt-5 text-center text-3xl">회원가입</h1>
         <Formik
@@ -52,6 +56,7 @@ const SignUpForm = () => {
         >
           {({ isSubmitting, errors, touched }) => (
             <Form className="flex flex-col gap-2">
+               <div className=' relative '>
               <InputFormik
                 label="이메일"
                 name={'email'}
@@ -59,6 +64,15 @@ const SignUpForm = () => {
                 touched={touched}
                 errors={errors}
               />
+              <Image className=' absolute left-[14px] top-[65px]'
+                src="/Icon/Icon-email.png"
+                alt="Next.js Logo"
+                width={16}
+                height={5}
+              />
+              </div>
+
+              <div className=' relative'>
               <InputFormik
                 label="사용자명(이름)"
                 name={'name'}
@@ -66,7 +80,15 @@ const SignUpForm = () => {
                 touched={touched}
                 errors={errors}
               />
+              <Image className=' absolute left-[16px] top-[66px]'
+                src="/Icon/Icon-circle.png"
+                alt="Next.js Logo"
+                width={10}
+                height={5}
+              />
+              </div>
 
+              <div className=' relative'>
               <InputFormik
                 label="비밀번호"
                 name={'password'}
@@ -74,6 +96,15 @@ const SignUpForm = () => {
                 touched={touched}
                 errors={errors}
               />
+              <Image className=' absolute left-[14px] top-[62px]'
+                src="/Icon/Icon-key.png"
+                alt="Next.js Logo"
+                width={16}
+                height={5}
+              />
+              </div>
+
+              <div className=' relative'>
               <InputFormik
                 label="비밀번호 확인"
                 name={'confirmPassword'}
@@ -81,6 +112,15 @@ const SignUpForm = () => {
                 touched={touched}
                 errors={errors}
               />
+              <Image className=' absolute left-[14px] top-[62px]'
+                src="/Icon/Icon-key.png"
+                alt="Next.js Logo"
+                width={16}
+                height={5}
+              />
+              </div>
+
+              <div className=' relative'>
               <InputFormik
                 label="회사"
                 name={'company'}
@@ -88,6 +128,15 @@ const SignUpForm = () => {
                 touched={touched}
                 errors={errors}
               />
+              <Image className=' absolute left-[14px] top-[61px]'
+                src="/Icon/Icon-building.png"
+                alt="Next.js Logo"
+                width={16}
+                height={5}
+              />
+              </div>
+
+                <div className=' relative '>  
               <InputFormik
                 label="직급"
                 name={'rank'}
@@ -95,6 +144,15 @@ const SignUpForm = () => {
                 touched={touched}
                 errors={errors}
               />
+              <Image className=' absolute left-[16px] top-[66px]'
+                src="/Icon/Icon-circle.png"
+                alt="Next.js Logo"
+                width={10}
+                height={5}
+              />
+              </div>
+
+              <div className=' relative '>
               <InputFormik
                 label="가입 경로"
                 name={'funnel'}
@@ -102,13 +160,25 @@ const SignUpForm = () => {
                 touched={touched}
                 errors={errors}
               />
+              <p className=' absolute left-[13px] top-[63px]'>
+              <Image 
+                src="/Icon/Icon-down-right.png"
+                alt="Next.js Logo"
+                width={16}
+                height={5}
+                style={{ height: 'auto' }}
+              />
+              </p>
+              </div>
 
-              <Button type="submit" disabled={isSubmitting} className="my-5">
+              <Button type="submit" disabled={isSubmitting} className="mt-5 bg-[#5B74E1]">
                 회원가입
               </Button>
             </Form>
           )}
         </Formik>
+         </div>      
+        </div>
       </div>
     </div>
   );

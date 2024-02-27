@@ -10,8 +10,9 @@ import { toast } from 'react-toastify';
 import Button from '../Button';
 import InputFormik from '../InputFormik';
 
-const EditUserInfoForm = () => {
+const EditUserInfoForm = ({ params }: { params: { userId: string } }) => {
   const router = useRouter();
+  const userId = params.userId;
   const { data: session } = useSession();
 
   return (
@@ -30,12 +31,15 @@ const EditUserInfoForm = () => {
             console.log(data);
             setSubmitting(true);
             try {
-              const response = await axios.post('/api/auth/editUserInfo', {
-                email: data.email,
-                name: data.name,
-                company: data.company,
-                rank: data.rank,
-              });
+              const response = await axios.post(
+                `/api/auth/editUserInfo/${userId}`,
+                {
+                  email: data.email,
+                  name: data.name,
+                  company: data.company,
+                  rank: data.rank,
+                }
+              );
               console.log(response);
 
               if (response.status === 200) {
@@ -84,7 +88,9 @@ const EditUserInfoForm = () => {
               />
 
               <Link href="/forgot-password">비밀번호 변경</Link>
-              <Link href="/forgot-password">회원 탈퇴</Link>
+              <Link href={`/delete-account/${session?.user.userId}`}>
+                회원 탈퇴
+              </Link>
               <Button type="submit" disabled={isSubmitting} className="my-5">
                 정보수정
               </Button>

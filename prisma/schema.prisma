@@ -29,24 +29,78 @@ model User {
   company         String?
   rank            String?
   funnel          String?
+  deletedYn       Boolean     @default(false)
   password        String
   image           String      @default("/images/noUser.png")
   role            Role        @default(USER)
   provider        String      @default("credentials")
-  createdAt       DateTime    @default(now())
-  emailVerified   DateTime?   @map("verifiedAt")
+  createdAt             DateTime          @default(now())
+  emailVerified         DateTime?         @map("verifiedAt")
   passwordResetTokens PasswordResetToken[]
+  DeleteAccount   DeleteAccount[]
+  Project Project[]
 
   posts   Post[]
 }
 
 model PasswordResetToken {
+  id              Int       @id @default(autoincrement())
+  token           String    @unique
+  createdAt       DateTime  @default(now())
+  resetAt         DateTime?
+  user            User      @relation(fields: [tokenUserId], references: [id])
+  tokenUserId     Int
+}
+
+model DeleteAccount {
+  id              Int       @id @default(autoincrement())
+  deletedAt       DateTime  @default(now())
+  reason          String?
+  user            User      @relation(fields: [deleteUserId], references: [userId])
+  deleteUserId    String
+}
+
+model Project {
   id        Int       @id @default(autoincrement())
-  token     String    @unique
-  createdAt DateTime  @default(now())
-  resetAt   DateTime?
-  user      User      @relation(fields: [tokenUserId], references: [id])
-  tokenUserId Int
+  user      User     @relation(fields: [userId], references: [userId])
+  userId String  
+  projectCategory   String
+  projectField String
+  projectProgressClassification String
+  planningStatus String
+  detailedPlanningStatus String?
+  detailedPlanningText String?
+  referenceMaterials String?
+  projectTitle String
+  detailedTaskDescription String
+  relatedTechnologies String?
+  availableBudget Int
+  budgetNegotiable Boolean?
+  expectedStartDate DateTime
+  startDateNegotiable Boolean?
+  expectedDuration String
+  durationNegotiable Boolean?
+  preMeetingMethod String
+  meetingMethod String
+  meetingFrequency String
+  clientLocationCity String
+  clientLocationDistrict String
+
+  applicationDeadline DateTime
+  isFundingAvailable String
+  isFundingAvailableSub String?
+  applicantRequirements String?
+  applicantRequirementsSub String?
+  preliminaryVerificationQuestions String?
+
+  collaborationTeamComposition String?
+  isCollaborationTeamComposition Boolean?
+  itProjectManagementExperience String
+  futurePlans String?
+  projectPriorityFirst String?
+  projectPrioritySecond String?
+  projectPriorityThird String?
+  interestedProducts String
 }
 
 enum Role {

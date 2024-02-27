@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
@@ -14,11 +14,11 @@ type VerifyEmailProps = {
 export default function Page({ params }: VerifyEmailProps) {
   const router = useRouter();
 
-  const userId = params.userId
+  const userId = params.userId;
 
   useEffect(() => {
-    (async()=>{
-      const response = await axios.put(`/api/auth/verifyemail/${userId}`)
+    (async () => {
+      const response = await axios.put(`/api/auth/verifyemail/${userId}`);
       const { message } = response.data;
 
       switch (message) {
@@ -41,7 +41,7 @@ export default function Page({ params }: VerifyEmailProps) {
         default:
           router.push('/');
       }
-    })()
+    })();
   }, [userId, router]);
 
   return null;

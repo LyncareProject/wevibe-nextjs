@@ -3,14 +3,19 @@ import prisma from '@/libs/prisma';
 import { getServerSession } from 'next-auth';
 import { NextResponse } from 'next/server';
 
-export async function POST(request: Request) {
+export async function POST(
+  request: Request,
+  { params }: { params: { userId: string } }
+) {
   try {
     const session = await getServerSession(authOptions);
     const body = await request.json();
+    const { userId } = params;
     const { email, image, name, company, rank } = body;
 
     const user = await prisma.user.findUnique({
       where: {
+        userId,
         email,
       },
     });

@@ -10,6 +10,7 @@ declare module 'next-auth' {
     provider: string;
     company: string;
     rank: string;
+    userId: string;
     createdAt: Date;
     emailVerified: Date;
   }

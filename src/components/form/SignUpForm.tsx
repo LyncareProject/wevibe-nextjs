@@ -32,7 +32,8 @@ const SignUpForm = () => {
                 email: data.email,
                 name: data.name,
                 password: data.password,
-                company: data.rank,
+                company: data.company,
+                rank: data.rank,
                 funnel: data.funnel,
               });
 

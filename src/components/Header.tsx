@@ -69,7 +69,7 @@ const Header: FC = () => {
                     height={25}
                     alt={'user'}
                   />
-                  <Link href={'/mypage'}>
+                  <Link href={`/mypage/${session.user.userId}`}>
                     <li>{session.user.name} 님</li>
                   </Link>
                   <button className="mb-2" onClick={() => signOut()}>

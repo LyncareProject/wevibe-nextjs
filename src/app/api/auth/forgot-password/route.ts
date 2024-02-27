@@ -20,7 +20,7 @@ export async function POST(request: Request) {
 
     if (!user) {
       return NextResponse.json(
-        { message: 'This email is not registered' },
+        { message: '입력하신 이메일은 존재하지 않습니다.' },
         { status: 400 }
       );
     }

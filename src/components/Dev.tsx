@@ -8,8 +8,8 @@ const Dev = () => {
         id="dev"
         className=" top-0  mt-[-152px]  max-h-fit w-full bg-[url('/img/h_bg.png')]  bg-cover bg-center bg-no-repeat py-24 lg:px-6"
       >
-        <div className="relative max-w-[1000px] m-auto top-0 align-bottom object-bottom    pt-30   ">
-          <div className=" flex max-h-96 mt-80  sm:mt-40">
+        <div className="relative top-0 m-auto max-w-[1000px] object-bottom pt-28 align-bottom">
+          <div className=" mt-80 flex max-h-96  sm:mt-40">
             <p className="px-0">
               <Image
                 src="/img/D.png"

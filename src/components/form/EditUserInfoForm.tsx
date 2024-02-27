@@ -18,13 +18,13 @@ const EditUserInfoForm = () => {
   const { data: session } = useSession();
 
   return (
-    <div id="dev"  className=" bg-[url('/img/h_bg.png')]   w-full h-auto  bg-cover bg-center  bg-no-repeat top-0 py-12 lg:px-6 mt-[-152px] mb-[-30px]">
-    <div className="w-[60%] m-auto bg-white h-auto pb-8 mb-[60px]  rounded-3xl   shadow-lg drop-shadow-sm">
-      <div className="mx-auto flex w-full max-w-[330px] lg:px-4 mt-[165px] flex-col gap-8 ">
-      <h1 className="pt-5 text-center text-3xl mt-4">마이페이지</h1>
+    <div id="dev"  className=" top-0   mb-[-30px] mt-[-152px]  h-auto w-full  bg-[url('/img/h_bg.png')] bg-cover bg-center bg-no-repeat py-12 lg:px-6">
+    <div className="m-auto mb-[60px] h-auto w-[60%] rounded-3xl bg-white  pb-8   shadow-lg drop-shadow-sm">
+      <div className="mx-auto mt-[165px] flex w-full max-w-[330px] flex-col gap-8 lg:px-4 ">
+      <h1 className="mt-4 pt-5 text-center text-3xl">마이페이지</h1>
         <p>
           <Image
-            className="w-[110px] h-[110px]  rounded-full block mt-[10px] mb-[8px]  m-auto "
+            className="m-auto mb-[8px]  mt-[10px] block size-[110px] rounded-full "
             src={noUser}
             // src={session.user.image || noUser}
             width={300}
@@ -83,10 +83,10 @@ const EditUserInfoForm = () => {
                  width={10}
                  height={5}
                />
-               <p className=' absolute top-[61px] text-[12px] text-[#5B74E1]  right-[16px]'>수정</p>
+               <p className=' absolute right-[16px] top-[61px] text-[12px]  text-[#5B74E1]'>수정</p>
                </div>
 
-               <div className=' relative -mb-3 -mt-3'>
+               <div className=' relative -my-3'>
                <InputFormik
                  label="이메일"
                  name={'email'}
@@ -100,7 +100,7 @@ const EditUserInfoForm = () => {
                  width={16}
                  height={5}
                />
-               <p className=' absolute top-[61px] text-[12px] text-[#5B74E1]  right-[16px]'>수정</p>
+               <p className=' absolute right-[16px] top-[61px] text-[12px]  text-[#5B74E1]'>수정</p>
                </div>
  
              
@@ -138,7 +138,7 @@ const EditUserInfoForm = () => {
              
                <Link href="/forgot-password">비밀번호 변경</Link>
  
-               <Button type="submit" disabled={isSubmitting} className="my-5 flex justify-center text-center font-bold text-[#5B74E1] bg-[#F2F4FF]">
+               <Button type="submit" disabled={isSubmitting} className="my-5 flex justify-center bg-[#F2F4FF] text-center font-bold text-[#5B74E1]">
                {/* <Image className=' mt-[3px] mr-3 ] '
                  src="/Icon/Icon-bluekey.png"
                  alt="Next.js Logo"
@@ -149,8 +149,8 @@ const EditUserInfoForm = () => {
                </Button>
 
                <Link href="/deactivate" >
-               <Button type="submit" disabled={isSubmitting} className="-my-4 mb-3 flex justify-center font-bold text-[#8D8D8D]  bg-[#F2F4FF]">
-               <Image className='mt-[3.2px] mr-3 '
+               <Button type="submit" disabled={isSubmitting} className="-my-4 mb-3 flex justify-center bg-[#F2F4FF] font-bold  text-[#8D8D8D]">
+               <Image className='mr-3 mt-[3.2px] '
                  src="/Icon/Icon-out.png"
                  alt="Next.js Logo"
                  width={17.5}

@@ -46,6 +46,7 @@ const ProjectStage06: React.FC<ProjectStage06Props> = ({ stage }) => {
 
   useEffect(() => {
     updateState('applicationDeadline', new Date());
+    // eslint-disable-next-line
   }, []);
 
   const isNextButtonDisabled = !isFundingAvailable;

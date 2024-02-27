@@ -1,4 +1,5 @@
 import Header from '@/components/Header';
+import ProjectAlertBar from '@/components/ProjectAlertBar';
 import SessionProvider from '@/components/SessionProvider';
 import Sidebar from '@/components/Sidebar';
 import Providers from '@/components/providers';
@@ -27,12 +28,13 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={notoSans.className}>
-        <Providers>
-          <div className="flex flex-col">
-            <SessionProvider session={session}>
+        <SessionProvider session={session}>
+          <Providers>
+            <div className="flex flex-col">
               <main className="flex flex-1 flex-col overflow-y-auto">
-              <Sidebar />
-              <Header />
+                <ProjectAlertBar />
+                <Sidebar />
+                <Header />
                 {children}
                 <ToastContainer
                   position="top-center"
@@ -41,11 +43,11 @@ export default async function RootLayout({
                   pauseOnFocusLoss={false}
                   theme="light"
                 />
-              <Footer />
+                <Footer />
               </main>
-            </SessionProvider>
-          </div>
-        </Providers>
+            </div>
+          </Providers>
+        </SessionProvider>
       </body>
     </html>
   );

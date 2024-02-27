@@ -27,7 +27,7 @@ const InputFormik: React.FC<InputFormikProps> = ({
         name={name}
         type={type || 'text'}
         className={cn(
-          'block w-full rounded-lg border border-[#EAEAEA] bg-white px-5 py-3 text-sm text-gray-900 focus:border-black focus:ring-black indent-[20px]'
+          'block w-full rounded-lg border border-[#EAEAEA] bg-white px-5 py-3 indent-[20px] text-sm text-gray-900 focus:border-black focus:ring-black'
         )}
       />
       {touched[name] && errors[name] ? (

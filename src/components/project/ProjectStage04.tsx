@@ -46,8 +46,9 @@ const ProjectStage04: React.FC<ProjectStage04Props> = ({ stage }) => {
 
   useEffect(() => {
     updateState('expectedStartDate', new Date());
+    // eslint-disable-next-line
   }, []);
-  
+
   const isNextButtonDisabled =
     !availableBudget || !expectedStartDate || expectedDuration.length === 0;
 

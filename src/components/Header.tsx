@@ -13,11 +13,11 @@ const Header: FC = () => {
   console.log(session);
 
   return (
-    <div className="w-full sm:w-[93%]   sm:m-auto "  >
-    <div className=" flex flex-col justify-between py-6 justify-items-center m-auto h-32 md:justify-between">
-      <header className="h-32 z-10">
-          <nav className="flex justify-around justify-items-center max-w-[1100px] m-auto  ">
-            <p className="w-[10%] cursor-pointer lg:w-[60%] sm:w-[50%]">
+    <div className="w-full sm:m-auto   sm:w-[93%] "  >
+    <div className=" m-auto flex h-32 flex-col justify-between justify-items-center py-6 md:justify-between">
+      <header className="z-10 h-32">
+          <nav className="m-auto flex max-w-[1100px] justify-around justify-items-center  ">
+            <p className="w-[10%] cursor-pointer sm:w-[50%] lg:w-[60%]">
             <Link href='./'>
               <Image
                 src="/img/Logoimg.png"
@@ -28,9 +28,9 @@ const Header: FC = () => {
               />
               </Link>
             </p>
-            <div className="flex bg-[url('/img/nav_bg2.png')] bg-cover drop-shadow-md backdrop-saturate-200 backdrop-brightness-150 opacity-80 backdrop-blur-xl px-4 rounded-full pt-0.5  bg-no-repeat bg-center lg:bg-none lg:backdrop-blur-none lg:backdrop-filter-none lg:pt-0 md:w-[230px]">
-            <ul className=" flex justify-around  py-5   lg:hidden mt-[1px] ">
-              <li className="px-3 cursor-pointer">
+            <div className="flex rounded-full bg-[url('/img/nav_bg2.png')] bg-cover bg-center bg-no-repeat px-4 pt-0.5 opacity-80 drop-shadow-md backdrop-blur-xl  backdrop-brightness-150 backdrop-saturate-200 md:w-[230px] lg:bg-none lg:pt-0 lg:backdrop-blur-none lg:backdrop-filter-none">
+            <ul className=" mt-[1px] flex  justify-around   py-5 lg:hidden ">
+              <li className="cursor-pointer px-3">
                 <a href="#Team_dev">Team DEV</a>
               </li>
               <li className="px-3"></li>
@@ -51,7 +51,7 @@ const Header: FC = () => {
 
             <ol
               className={cn(
-                'flex justify-between h-[43px] leading-[40px] mt-3 lg:w-[150px]  text-white bg-black border-[#222] rounded-full px-4 lg:border-2 lg:box-border  lg:bg-white lg:leading-[37px] lg:text-black lg:min-w-[230px] lg:mr-24 lg:justify-around md:-ml-24    2sm:hidden'  ,
+                'mt-3 flex h-[43px] justify-between rounded-full border-[#222]  bg-black px-4 leading-[40px] text-white md:-ml-24 lg:mr-24 lg:box-border  lg:w-[150px] lg:min-w-[230px] lg:justify-around lg:border-2 lg:bg-white lg:leading-[37px] lg:text-black    2sm:hidden'  ,
                 isOpen && 'hidden'
               )}
             >
@@ -66,7 +66,7 @@ const Header: FC = () => {
               ) : (
                 <>
                   <Image
-                    className="w-[25px] h-[25px] rounded-full block mt-[8px] mr-[10px]"
+                    className="mr-[10px] mt-[8px] block size-[25px] rounded-full"
                     src={session.user.image || noUser}
                     width={25}
                     height={25}
@@ -84,10 +84,10 @@ const Header: FC = () => {
             </ol>
      
             </ div>
-            <button className='hidden lg:block opacity-80 '>
+            <button className='hidden opacity-80 lg:block '>
             <Image
               id="Sidibar_boutton"
-              className="absolute hidden h-12 mb-2 right-7 top-[32px]    p-2 rounded-md  border-2 border-black box-border bg-white cursor-pointer lg:block  lg:mr-0 sm:right-3   "
+              className="absolute right-7 top-[32px] mb-2 box-border hidden    h-12 cursor-pointer  rounded-md border-2 border-black bg-white p-2 sm:right-3  lg:mr-0 lg:block   "
               src={!isOpen ? '/img/hamburger_.png' : '/img/sidebarClose.png'}
               alt="Next.js Logo"
               onClick={() => setIsOpen((open) => !open)}

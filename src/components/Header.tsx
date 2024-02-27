@@ -72,7 +72,7 @@ const Header: FC = () => {
                     height={25}
                     alt={'user'}
                   />
-                  <Link href={'/mypage'}>
+                  <Link href={`/mypage/${session.user.userId}`}>
                     <li>{session.user.name} 님</li>
                   </Link>
                   <p className='mx-2'>/</p>

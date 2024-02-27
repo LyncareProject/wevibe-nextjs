@@ -46,7 +46,16 @@ export const authOptions: NextAuthOptions = {
             email: credentials?.email,
           },
         });
+
+        const deleteAccount = await prisma.user.findUnique({
+          where: {
+            email: credentials?.email,
+            deletedYn: true,
+          },
+        });
         if (!existUser) throw new Error('해당 이메일로 가입한 적이 없습니다.');
+
+        if (deleteAccount) throw new Error('이미 탈퇴한 계정입니다.');
 
         if (existUser.provider !== 'credentials')
           throw new Error('소셜 로그인으로 회원가입한 회원입니다.');
@@ -135,8 +144,9 @@ export const authOptions: NextAuthOptions = {
         token.image = user.image;
         token.provider = user.provider;
         token.role = user.role;
-        token.company = token.company;
-        token.rank = token.rank;
+        token.company = user.company;
+        token.rank = user.rank;
+        token.userId = user.userId;
       }
       return token;
     },
@@ -150,6 +160,7 @@ export const authOptions: NextAuthOptions = {
         session.user.provider = token.provider as string;
         session.user.company = token.company as string;
         session.user.rank = token.rank as string;
+        session.user.userId = token.userId as string;
       }
       return session;
     },

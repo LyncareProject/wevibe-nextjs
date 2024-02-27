@@ -6,5 +6,12 @@ import { redirect } from 'next/navigation';
 export default async function MyPage() {
   const session = await getServerSession(authOptions);
   if (!session) redirect('/');
-  return <EditUserInfoForm />;
+
+  return (
+    <EditUserInfoForm
+      params={{
+        userId: '',
+      }}
+    />
+  );
 }

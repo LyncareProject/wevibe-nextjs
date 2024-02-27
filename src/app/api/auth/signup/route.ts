@@ -15,10 +15,10 @@ export async function POST(request: Request) {
       },
     });
 
-    if (user) {
+    if (user?.email) {
       return NextResponse.json(
         {
-          message: '이미 가입된 이메일입니다.',
+          message: '이미 가입한 메일입니다.',
         },
         {
           status: 409,

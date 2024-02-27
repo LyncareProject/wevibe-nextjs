@@ -15,7 +15,7 @@ export async function POST(
   const passwordResetToken = await prisma.passwordResetToken.findUnique({
     where: {
       token,
-      createdAt: { gt: new Date(Date.now() - 1000 * 60 * 60 * 4) },
+      createdAt: { gt: new Date(Date.now() - 10 * 60 * 1000) }, //10분
       resetAt: null,
     },
   });
@@ -23,8 +23,7 @@ export async function POST(
   if (!passwordResetToken) {
     return NextResponse.json(
       {
-        message:
-          'Invalid token reset request. Please try resetting your password again.',
+        message: '비밀번호 변경 토큰이 만료되었습니다. 다시 시도해주세요.',
       },
       {
         status: 404,

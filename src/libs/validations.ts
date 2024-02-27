@@ -96,3 +96,9 @@ export const changePasswordSchema = yup
       .required('비밀번호를 한번 더 입력해 주세요'),
   })
   .required();
+
+export const resignReasonSchema = yup
+  .object({
+    reason: yup.string(),
+  })
+  .required();

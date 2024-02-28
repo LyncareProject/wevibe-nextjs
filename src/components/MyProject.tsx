@@ -8,6 +8,11 @@ interface MyProjectProps {
 }
 const MyProject: React.FC<MyProjectProps> = ({ project }) => {
   return (
+    <div id="dev"  className=" bg-[url('/img/h_bg.png')]   w-full h-auto  bg-cover bg-center  bg-no-repeat top-0 py-12 lg:px-6 mt-[-152px] mb-[-30px]">
+    <div className=' w-[60%] m-auto bg-white min-h-[500px] h-auto pb-8 mb-[60px]  rounded-3xl   shadow-lg drop-shadow-sm '> 
+      <div className="flex px-12 max-w-[700px]  mx-auto flex-col gap-4 py-8 mt-[155px]   ">
+      <h3 className=' text-center text-2xl my-4 '> 의뢰한 프로젝트 내용</h3>
+      <hr className='mb-5' />
     <div className="container flex flex-col gap-8">
       <p>{project.projectCategory}</p>
       <p>{project.projectField}</p>
@@ -46,6 +51,9 @@ const MyProject: React.FC<MyProjectProps> = ({ project }) => {
       <p>{project.interestedProducts}</p>
       <p>{format(new Date(project.createdAt), 'yyyy년 MM월 dd일')}</p>
     </div>
+    </div>
+  </div>
+  </div>
   );
 };
 

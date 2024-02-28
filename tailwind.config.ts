@@ -15,7 +15,7 @@ const config: Config = {
       },
       screens: {
 
-        '2sm': { max: '470px' },
+        '2sm': { max: '550px' },
 
         sm: { max: '640px' },
         // => @media (min-width: 640px) { ... }
@@ -23,10 +23,10 @@ const config: Config = {
         md: { max: '768px' },
         // => @media (min-width: 768px) { ... }
 
-        lg: { max: '1023px' },
+        lg: { max: '1100px' },
         // => @media (min-width: 1024px) { ... }
 
-        xl: { max: '1280px' },
+        xl: { max: '13000px' },
         // => @media (min-width: 1280px) { ... }
 
         '2xl': '1536px',

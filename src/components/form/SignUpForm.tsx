@@ -12,7 +12,9 @@ import InputFormik from '../InputFormik';
 const SignUpForm = () => {
   const router = useRouter();
   return (
-    <div className="flex min-h-screen items-center justify-center">
+    <div id="dev"  className=" bg-[url('/img/h_bg.png')]  w-full h-auto  bg-cover bg-center  bg-no-repeat top-0 py-12 lg:px-6 mt-[-152px] mb-[-30px]">
+    <div className=' w-[60%] m-auto bg-white h-auto pb-8 mb-[60px]  rounded-3xl   shadow-lg drop-shadow-sm '> 
+    <div className="flex px-12 max-w-[550px]  mx-auto flex-col gap-4 py-8 mt-[155px] ">
       <div className="mx-auto flex w-full max-w-[330px] flex-col gap-8 ">
         <h1 className="pt-5 text-center text-3xl">회원가입</h1>
         <Formik
@@ -62,7 +64,7 @@ const SignUpForm = () => {
                   touched={touched}
                   errors={errors}
                 />
-                <Image
+                <Image 
                   className=" absolute left-[14px] top-[65px]"
                   src="/Icon/Icon-email.png"
                   alt="Next.js Logo"
@@ -187,6 +189,8 @@ const SignUpForm = () => {
         </Formik>
       </div>
     </div>
+    </div>  
+  </div>
   );
 };
 

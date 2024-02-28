@@ -3,8 +3,12 @@
 import { signUpSchema } from '@/libs/validations';
 import axios from 'axios';
 import { Form, Formik } from 'formik';
+import { signIn } from 'next-auth/react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { FcGoogle } from 'react-icons/fc';
+import { RiKakaoTalkFill } from 'react-icons/ri';
+import { SiNaver } from 'react-icons/si';
 import { toast } from 'react-toastify';
 import Button from '../Button';
 import InputFormik from '../InputFormik';
@@ -17,6 +21,33 @@ const SignUpForm = () => {
     <div className="flex px-12 max-w-[550px]  mx-auto flex-col gap-4 py-8 mt-[155px] ">
       <div className="mx-auto flex w-full max-w-[330px] flex-col gap-8 ">
         <h1 className="pt-5 text-center text-3xl">회원가입</h1>
+        <div className="mt-4">
+          <p className="my-8 text-center text-[#919191]">간편로그인</p>
+          <button
+              className="flex w-full flex-row items-center justify-center gap-2 rounded-md bg-[#FEE500] px-5 py-3 font-medium text-slate-900 mt-5"
+            onClick={() => signIn('kakao', { redirect: true, callbackUrl: '/' })}
+          >
+            <RiKakaoTalkFill className="text-xl" />
+            카카오로 1초 만에 시작하기
+          </button>
+          <button
+           className="flex w-full flex-row items-center justify-center gap-2 rounded-md bg-[#fff] px-5 py-3 font-medium text-black border-2 mt-5"
+            onClick={() => signIn('naver', { redirect: true, callbackUrl: '/' })}
+          >
+            <SiNaver className="text-xl" />
+            네이버 아이디로 시작하기
+          </button>
+          <button
+            className="flex w-full flex-row items-center justify-center gap-2 rounded-md bg-[#fff] px-5 py-3 font-medium text-black border-2 mt-5"
+            onClick={() => signIn('google', { redirect: true, callbackUrl: '/' })}
+          >
+            <FcGoogle className="text-xl" />
+            구글 아이디로 시작하기
+          </button>
+        </div>
+        <div>
+          <p className="mt-10  text-center text-[#919191]">이메일로 회원가입</p>
+        </div>
         <Formik
           initialValues={{
             email: '',
@@ -188,6 +219,7 @@ const SignUpForm = () => {
           )}
         </Formik>
       </div>
+  
     </div>
     </div>  
   </div>

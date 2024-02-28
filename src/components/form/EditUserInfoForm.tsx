@@ -32,6 +32,19 @@ const EditUserInfoForm = ({ params }: { params: { userId: string } }) => {
                     alt={'user'}
                   />
         </p>
+
+        <Link href="/myproject"> 
+              <Button type="submit"  className="mt-1 flex justify-center text-center font-bold text-[#eee] ">
+              {/* <Image className=' mt-[3px] mr-3 ] '
+                src="/Icon/Icon-bluekey.png"
+                alt="Next.js Logo"
+                width={18}
+                height={5}
+              /> */}
+                내 프로젝트 목록
+              </Button>
+        </Link>
+
         <Formik
           initialValues={{
             email: session?.user.email,
@@ -135,9 +148,8 @@ const EditUserInfoForm = ({ params }: { params: { userId: string } }) => {
               />
               </div>
 
-              <Link href="/forgot-password">비밀번호 변경</Link>
-              
-              
+              <Link  className='mt-2 font-semibold underline ' href="/forgot-password">비밀번호 변경</Link>
+
               <Button type="submit" disabled={isSubmitting} className="my-5 flex justify-center text-center font-bold text-[#5B74E1] bg-[#F2F4FF]">
               {/* <Image className=' mt-[3px] mr-3 ] '
                 src="/Icon/Icon-bluekey.png"
@@ -147,6 +159,7 @@ const EditUserInfoForm = ({ params }: { params: { userId: string } }) => {
               /> */}
                 정보수정
               </Button>
+          
               <Button  className="-my-4 mb-3 flex justify-center font-bold text-[#8D8D8D]  bg-[#F2F4FF]">
               <Link  className='flex'  href={`/delete-account/${session?.user.userId}`} >
               <Image className='mt-[3.2px] mr-3 '

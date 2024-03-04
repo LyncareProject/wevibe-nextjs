@@ -4,7 +4,9 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
+import noUser from '../../public/images/noUser.png';
 import { useSidebar } from './providers';
+
 
 const Header: FC = () => {
   const { isOpen, setIsOpen } = useSidebar();

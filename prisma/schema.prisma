@@ -21,21 +21,20 @@ model Post {
 }
 
 model User {
-  id                  Int                  @id @default(autoincrement())
-  userId              String               @unique @default(uuid())
-  email               String               @unique
-  name                String
-  company             String?
-  rank                String?
-  funnel              String?
-  password            String
-  image               String               @default("/images/noUser.png")
-  role                Role                 @default(USER)
-  provider            String               @default("credentials")
-  createdAt           DateTime             @default(now())
-  emailVerified       DateTime?            @map("verifiedAt")
-  deletedYn           Boolean              @default(false)
-  DeleteAccount       DeleteAccount[]
+  id              Int         @id @default(autoincrement())
+  userId          String      @unique @default(uuid())
+  email           String      @unique
+  name            String
+  company         String?
+  rank            String?
+  funnel          String?
+  deletedYn       Boolean     @default(false)
+  password        String
+  image           String      @default("/images/noUser.png")
+  role            Role        @default(USER)
+  provider        String      @default("credentials")
+  createdAt             DateTime          @default(now())
+  emailVerified         DateTime?         @map("verifiedAt")
   passwordResetTokens PasswordResetToken[]
   posts               Post[]
   Project             Project[]
@@ -92,17 +91,15 @@ model Project {
   applicantRequirements            String?
   applicantRequirementsSub         String?
   preliminaryVerificationQuestions String?
-  collaborationTeamComposition     String?
-  isCollaborationTeamComposition   Boolean?
-  itProjectManagementExperience    String
-  futurePlans                      String?
-  projectPriorityFirst             String?
-  projectPrioritySecond            String?
-  projectPriorityThird             String?
-  interestedProducts               String
-  user                             User     @relation(fields: [userId], references: [userId])
-  createdAt                        DateTime  @default(now())
-  @@index([userId], map: "Project_userId_fkey")
+
+  collaborationTeamComposition String?
+  isCollaborationTeamComposition Boolean?
+  itProjectManagementExperience String
+  futurePlans String?
+  projectPriorityFirst String?
+  projectPrioritySecond String?
+  projectPriorityThird String?
+  interestedProducts String
 }
 
 enum Role {

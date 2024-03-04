@@ -18,6 +18,18 @@ module.exports = {
         port: '',
         pathname: '**',
       },
+      {
+        protocol: 'http',
+        hostname: 'k.kakaocdn.net',
+        port: '',
+        pathname: '**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'avrvcxaktbjsodupvnpr.supabase.co',
+        port: '',
+        pathname: '**',
+      },
     ],
   },
 };

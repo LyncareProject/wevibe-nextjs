@@ -34,10 +34,11 @@ const ImageChangeModal = ({
     if (selectedFile) {
       const randomFileName =
         uuidv4() + '.' + selectedFile.name.split('.').pop();
-      const filePath = `${userId}/${randomFileName}`;
+      const filePath = `${supabaseUrl}/storage/v1/object/public/profile-images/${userId}/${randomFileName}`;
+      const storageFilePath = `${userId}/${randomFileName}`;
       const { data, error } = await supabase.storage
         .from('profile-images')
-        .upload(filePath, selectedFile);
+        .upload(storageFilePath, selectedFile);
       sessionUpdate({ info: filePath });
       onRequestClose();
 

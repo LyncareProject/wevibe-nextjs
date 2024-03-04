@@ -12,8 +12,6 @@ const Header: FC = () => {
   console.log(session);
   console.log(session?.user.userId);
 
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-
   return (
     <div className="w-full sm:m-auto   sm:w-[93%] ">
       <div className=" m-auto flex h-32 flex-col justify-between justify-items-center py-6 md:justify-between">
@@ -69,16 +67,14 @@ const Header: FC = () => {
                   <>
                     <Image
                       className="mr-[10px] mt-[8px] block size-[25px] rounded-full"
-                      src={
-                        `${supabaseUrl}/storage/v1/object/public/profile-images/${session.user.image}` ||
-                        session.user.image
-                      }
+                      src={session.user.image}
                       width={25}
                       height={25}
                       alt={'user'}
                     />
-                    <Link href={`/mypage/${session.user.userId}`}>
-                      <li>{session.user.name} 님</li>
+
+                    <Link href={`/mypage/${session?.user.userId}`}>
+                      <li>{session?.user.name} 님</li>
                     </Link>
                     <p className="mx-2">/</p>
                     <button className="mb-2" onClick={() => signOut()}>

@@ -34,10 +34,7 @@ const EditUserInfoForm = ({ params }: { params: { userId: string } }) => {
           <button onClick={openModal}>
             <img
               className="size-[200px] rounded-full mx-auto my-0"
-              src={
-                `${supabaseUrl}/storage/v1/object/public/profile-images/${session?.user.image}` ||
-                session?.user.image
-              }
+              src={session?.user.image}
               width={200}
               height={200}
               alt={'user'}

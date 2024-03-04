@@ -16,13 +16,13 @@ import InputFormik from '../InputFormik';
 const SignUpForm = () => {
   const router = useRouter();
   return (
-    <div id="dev"  className=" bg-[url('/img/h_bg.png')]  w-full h-auto  bg-cover bg-center  bg-no-repeat top-0 py-12 lg:px-6 mt-[-152px] mb-[-30px]">
-    <div className=' w-[60%] m-auto bg-white h-auto pb-8 mb-[60px]  rounded-3xl   shadow-lg drop-shadow-sm '> 
-    <div className="flex px-12 max-w-[550px]  mx-auto flex-col gap-4 py-8 mt-[155px] ">
+    <div id="dev"  className=" bg-[url('/img/h_bg.png')]   w-full h-auto  bg-cover bg-center  bg-no-repeat top-0 py-12 lg:px-6 mt-[-152px] mb-[-30px] 2sm:px-2">
+    <div className="w-[40%] lg:w-[60%] 2sm:w-[97%] m-auto bg-white h-auto pb-8 mb-[60px]  rounded-3xl   shadow-lg drop-shadow-sm">
+      <div className="mx-auto flex w-full max-w-[330px] lg:px-4 mt-[165px] flex-col gap-8 2sm:px-2 ">
       <div className="mx-auto flex w-full max-w-[330px] flex-col gap-8 ">
-        <h1 className="pt-5 text-center text-3xl">회원가입</h1>
+        <h1 className="mt-4 pt-9 text-3xl font-bold text-center leading-8  from-black">회원가입</h1>
         <div className="mt-4">
-          <p className="my-8 text-center text-[#919191]">간편로그인</p>
+          <p className="my-3 pb-2 text-center text-xl text-[#919191]">간편로그인</p>
           <button
               className="flex w-full flex-row items-center justify-center gap-2 rounded-md bg-[#FEE500] px-5 py-3 font-medium text-slate-900 mt-5"
             onClick={() => signIn('kakao', { redirect: true, callbackUrl: '/' })}
@@ -46,7 +46,7 @@ const SignUpForm = () => {
           </button>
         </div>
         <div>
-          <p className="mt-10  text-center text-[#919191]">이메일로 회원가입</p>
+          <p className="mt-8  text-center text-xl text-[#919191]">이메일로 회원가입</p>
         </div>
         <Formik
           initialValues={{
@@ -211,7 +211,7 @@ const SignUpForm = () => {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="mt-5 bg-[#5B74E1]"
+                className="my-5 bg-[#5B74E1]"
               >
                 회원가입
               </Button>

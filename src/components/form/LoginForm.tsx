@@ -38,13 +38,13 @@ const LoginForm = () => {
 
   return (
     /* eslint-disable-next-line */
-    <div id="dev"  className=" bg-[url('/img/h_bg.png')]   w-full h-auto  bg-cover bg-center  bg-no-repeat top-0 py-12 lg:px-6 mt-[-152px] mb-[-30px]">
-     <div className=' w-[60%] m-auto bg-white h-auto pb-8 mb-[60px]  rounded-3xl   shadow-lg drop-shadow-sm '> 
-      <div className="flex px-12 max-w-[550px]  mx-auto flex-col gap-4 py-8 mt-[155px]   ">
-        <h2 className="mt-4 text-xl font-bold text-center leading-8  from-black">
+    <div id="dev"  className=" bg-[url('/img/h_bg.png')]   w-full h-auto  bg-cover bg-center  bg-no-repeat top-0 py-12 lg:px-6 mt-[-152px] mb-[-30px] 2sm:px-2">
+    <div className="w-[40%] lg:w-[60%] 2sm:w-[97%] m-auto bg-white h-auto pb-8 mb-[60px]  rounded-3xl   shadow-lg drop-shadow-sm">
+      <div className="mx-auto flex w-full max-w-[330px] lg:px-4 mt-[165px] flex-col gap-8 2sm:px-2 ">
+        <h2 className="mt-4 pt-9 text-3xl font-bold text-center leading-8  from-black">
           로그인
         </h2>
-        <div className="mt-8">
+        <div className="mt-3">
           <button
               className="flex w-full flex-row items-center justify-center gap-2 rounded-md bg-[#FEE500] px-5 py-3 font-medium text-slate-900 mt-5"
             onClick={() => signIn('kakao', { redirect: true, callbackUrl: '/' })}

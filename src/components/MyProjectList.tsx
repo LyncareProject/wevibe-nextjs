@@ -9,9 +9,9 @@ interface MyProjectListProps {
 }
 const MyProjectList: React.FC<MyProjectListProps> = ({ projects }) => {
   return (
-    <div id="dev"  className=" bg-[url('/img/h_bg.png')]   w-full h-auto  bg-cover bg-center  bg-no-repeat top-0 py-12 lg:px-6 mt-[-152px] mb-[-30px]">
-    <div className=' w-[60%] m-auto bg-white min-h-[500px] h-auto pb-8 mb-[60px]  rounded-3xl   shadow-lg drop-shadow-sm '> 
-      <div className="flex px-12 max-w-[700px]  mx-auto flex-col gap-4 py-8 mt-[155px]   ">
+    <div id="dev"  className=" bg-[url('/img/h_bg.png')]   w-full h-auto  bg-cover bg-center  bg-no-repeat top-0 py-12 leading-7  lg:px-4 mt-[-152px] mb-[-30px] md:px-0">
+    <div className=' w-[60%] m-auto bg-white min-h-[500px] h-auto pb-8 mb-[60px]  rounded-3xl   shadow-lg drop-shadow-sm lg:w-[80%] md:w-[92%] 2sm:w-[100%] '> 
+      <div className="flex px-12 max-w-full  mx-auto flex-col gap-4 py-8 mt-[155px]  md:px-2 ">
       <h3 className=' text-center text-2xl my-4 mb-9'> 의뢰한 프로젝트 목록</h3>
       <div className="container flex flex-col gap-8  ">
         {projects  &&

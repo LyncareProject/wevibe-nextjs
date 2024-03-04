@@ -74,6 +74,7 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
+  // adapter: PrismaAdapter(prisma),
   pages: {
     signIn: '/login',
     error: '/error',
@@ -90,35 +91,34 @@ export const authOptions: NextAuthOptions = {
     async signIn({ user, profile, account }) {
       try {
         if (account?.provider === 'kakao' || 'google' || 'naver') {
-          console.log('Kakao로 로그인 시도');
+          console.log('profile :: ', profile);
+          console.log('user :: ', user);
+          console.log('account :: ', account);
 
           const db_user = await prisma.user.findUnique({
             where: { email: user.email! },
           });
 
-          // 이미 이메일 인증으로 가입한 경우 에러 처리
-          // if (db_user && db_user.provider === 'credentials') {
-          //   throw new Error(
-          //     '이미 이메일 인증으로 가입된 계정입니다. 해당 계정으로 로그인해주세요.'
-          //   );
-          // }
-
           if (!db_user) {
             const hashedPassword = await bcrypt.hash(uuidv4(), 12);
             const newUser = await prisma.user.create({
               data: {
-                userId : randomUUID(),
+                userId: randomUUID(),
                 email: user.email,
                 name: user.name,
                 password: hashedPassword,
-                image: profile?.properties?.profile_image,
-                provider: 'kakao',
+                company: user.company || '',
+                rank: user.rank || '',
+                image: user.image,
+                provider: account?.provider,
               },
             });
 
             user.id = newUser.id;
             user.userId = newUser.userId;
             user.image = newUser.image;
+            user.company = newUser.company;
+            user.rank = newUser.rank;
             user.role = newUser.role;
             user.provider = newUser.provider;
             return true;
@@ -126,6 +126,8 @@ export const authOptions: NextAuthOptions = {
           user.id = db_user.id;
           user.userId = db_user.userId;
           user.image = db_user.image;
+          user.company = db_user.company;
+          user.rank = db_user.rank;
           user.role = db_user.role;
           user.provider = db_user.provider;
           return true;
@@ -136,7 +138,7 @@ export const authOptions: NextAuthOptions = {
         return false;
       }
     },
-    async jwt({ token, user }) {
+    async jwt({ token, user, trigger, session }) {
       // console.log('jwt callback :', { token, user });
       if (user) {
         token.id = user.id;
@@ -148,6 +150,9 @@ export const authOptions: NextAuthOptions = {
         token.rank = user.rank;
         token.userId = user.userId;
       }
+      if (trigger === 'update') {
+        token.image = session.info;
+      }
       return token;
     },
     async session({ session, token }) {
@@ -155,7 +160,7 @@ export const authOptions: NextAuthOptions = {
       if (session.user) {
         session.user.id = token.id as number;
         session.user.userId = token.userId as string;
-        session.user.image = token.profileImg as string;
+        session.user.image = token.image as string;
         session.user.role = token.role as Role;
         session.user.provider = token.provider as string;
         session.user.company = token.company as string;

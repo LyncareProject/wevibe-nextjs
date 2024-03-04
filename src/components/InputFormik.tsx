@@ -5,6 +5,8 @@ interface InputFormikProps {
   label?: string;
   name: string;
   type?: string;
+  accept?: string;
+  ref?: any;
   touched: { [key: string]: boolean };
   errors: { [key: string]: string };
 }
@@ -13,6 +15,8 @@ const InputFormik: React.FC<InputFormikProps> = ({
   label,
   name,
   type,
+  ref,
+  accept,
   touched,
   errors,
 }) => {
@@ -26,6 +30,8 @@ const InputFormik: React.FC<InputFormikProps> = ({
       <Field
         name={name}
         type={type || 'text'}
+        accept={accept}
+        ref={ref}
         className={cn(
           'block w-full rounded-lg border border-[#EAEAEA] bg-white px-5 py-3 indent-[20px] text-sm text-gray-900 focus:border-black focus:ring-black'
         )}

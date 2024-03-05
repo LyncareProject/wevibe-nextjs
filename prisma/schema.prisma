@@ -25,8 +25,8 @@ model User {
   userId              String               @unique @default(uuid())
   email               String               @unique
   name                String
-  company             String?
-  rank                String?
+  company             String
+  rank                String
   funnel              String?
   password            String
   image               String               @default("/images/noUser.png")
@@ -100,8 +100,9 @@ model Project {
   projectPrioritySecond            String?
   projectPriorityThird             String?
   interestedProducts               String
+  createdAt                        DateTime @default(now())
   user                             User     @relation(fields: [userId], references: [userId])
-  createdAt                        DateTime  @default(now())
+
   @@index([userId], map: "Project_userId_fkey")
 }
 

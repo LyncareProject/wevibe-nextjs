@@ -96,13 +96,6 @@ export const authOptions: NextAuthOptions = {
             where: { email: user.email! },
           });
 
-          // 이미 이메일 인증으로 가입한 경우 에러 처리
-          // if (db_user && db_user.provider === 'credentials') {
-          //   throw new Error(
-          //     '이미 이메일 인증으로 가입된 계정입니다. 해당 계정으로 로그인해주세요.'
-          //   );
-          // }
-
           if (!db_user) {
             const hashedPassword = await bcrypt.hash(uuidv4(), 12);
             const newUser = await prisma.user.create({
@@ -113,6 +106,8 @@ export const authOptions: NextAuthOptions = {
                 password: hashedPassword,
                 image: profile?.properties?.profile_image,
                 provider: 'kakao',
+                company: '',
+                rank: ''
               },
             });
 

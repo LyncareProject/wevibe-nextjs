@@ -38,10 +38,10 @@ const LoginForm = () => {
 
   return (
     /* eslint-disable-next-line */
-    <div id="dev"  className=" bg-[url('/img/h_bg.png')]   w-full h-auto  bg-cover bg-center  bg-no-repeat top-0 py-12 lg:px-6 mt-[-152px] mb-[-30px]">
-    <div className=' m-auto mb-[60px] h-auto w-[60%] rounded-3xl bg-white  pb-8   shadow-lg drop-shadow-sm '> 
-      <div className="mx-auto mt-[155px] flex  max-w-[550px] flex-col gap-4 px-12 py-8   ">
-        <h2 className="mt-4 from-black text-center text-xl font-bold  leading-8">
+    <div id="dev"  className=" bg-[url('/img/h_bg.png')]   w-full h-auto  bg-cover bg-center  bg-no-repeat top-0 py-12 lg:px-6 mt-[-152px] mb-[-30px] 2sm:px-2">
+    <div className="w-[40%] lg:w-[60%] 2sm:w-[97%] m-auto bg-white h-auto pb-8 mb-[60px]  rounded-3xl   shadow-lg drop-shadow-sm">
+      <div className="mx-auto flex w-full max-w-[330px] lg:px-4 mt-[165px] flex-col gap-8 2sm:px-2 ">
+        <h2 className="mt-4 pt-9 text-3xl font-bold text-center leading-8  from-black">
           로그인
         </h2>
         <div className="mt-8">

@@ -61,10 +61,10 @@ const ImageChangeModal = ({
       contentLabel="Image Change Modal"
       ariaHideApp={false}
       className={
-        'flex justify-center items-center my-20 mx-auto flex-col w-6/12 border border-slate-300 rounded-xl bg-white z-50'
+        ' relative top-32 flex justify-center items-center my-20 mx-auto flex-col w-6/12 border border-slate-300 rounded-xl bg-white '
       }
     >
-      <div className=" flex justify-center items-center my-10 mx-auto w-10/12">
+      <div className=" flex justify-center items-center my-10 mx-auto w-6/12">
         {previewUrl ? (
           <img src={previewUrl} alt="Preview" />
         ) : session?.user.provider === 'credentials' ? (
@@ -76,18 +76,18 @@ const ImageChangeModal = ({
           <img src={session?.user.image} alt="userImage" />
         )}
       </div>
-      <div className="flex justify-between py-4 gap-[450px]">
-        <div className=" relative w-[80px] h-[36px] overflow-hidden">
+      <div className="flex justify-between py-4 gap-[350px]">
+        <div className=" relative w-[80px] h-[36px] overflow-hidden mt-1">
           <img src="/Icon/Icon-open.jpg" className=" p-0 pl-1" alt="open" />
           <input
             type="file"
-            className=" opacity-0 cursor-pointer top-0 right-0 absolute text-[29px]"
+            className=" opacity-100 cursor-pointer top-6 right-0 absolute text-[29px]"
             onChange={handleFileChange}
           />
         </div>
-        <div className="flex gap-3">
-          <button onClick={handleUploadClick}>저장</button>
-          <button onClick={() => onRequestClose()}>닫기</button>
+        <div className="flex gap-3 ">
+          <button className='className="-my-4 mb-3 border-2 rounded-lg p-2 block font-bold text-[#8D8D8D]  bg-[#f2f4ff]' onClick={handleUploadClick}>저장</button>
+          <button className='className="-my-4 mb-3 border-2 rounded-lg p-2 block  font-bold text-[#8D8D8D] ' onClick={() => onRequestClose()}>닫기</button>
         </div>
       </div>
     </Modal>

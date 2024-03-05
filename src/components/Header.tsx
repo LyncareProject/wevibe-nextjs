@@ -48,7 +48,10 @@ const Header: FC = () => {
                 <a href="#WORKS">Works</a>
               </li>
               <li className="px-3"></li>
-              <li className="px-3">프로젝트 의뢰하기</li>
+              <Link className='cursor-pointer'
+                    href={'/project'}>
+                  <li className="px-3">프로젝트 의뢰하기</li>
+                  </Link>
             </ul>
 
             <ol
@@ -78,7 +81,7 @@ const Header: FC = () => {
                     <li>{session.user.name} 님</li>
                   </Link>
                   <p className='mx-2'>/</p>
-                  <button className="mb-2" onClick={() => signOut()}>
+                  <button  className="mb-2" onClick={() => signOut()}>
                     로그아웃
                   </button>
                 </>

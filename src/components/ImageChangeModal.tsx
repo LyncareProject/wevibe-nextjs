@@ -1,3 +1,4 @@
+'use client';
 import { supabaseClient } from '@/utils/supabase';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
@@ -67,11 +68,6 @@ const ImageChangeModal = ({
       <div className=" flex justify-center items-center my-10 mx-auto w-10/12">
         {previewUrl ? (
           <img src={previewUrl} alt="Preview" />
-        ) : session?.user.provider === 'credentials' ? (
-          <img
-            src={`${supabaseUrl}/storage/v1/object/public/profile-images/${session.user.image}`}
-            alt="userImage"
-          />
         ) : (
           <img src={session?.user.image} alt="userImage" />
         )}

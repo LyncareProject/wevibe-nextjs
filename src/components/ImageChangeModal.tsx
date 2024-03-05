@@ -61,29 +61,25 @@ const ImageChangeModal = ({
       contentLabel="Image Change Modal"
       ariaHideApp={false}
       className={
-        ' relative top-32 flex justify-center items-center my-20 mx-auto flex-col w-6/12 border border-slate-300 rounded-xl bg-white '
+        ' relative top-24  justify-center items-center my-20 mx-auto flex-col w-6/12 border border-slate-300 rounded-xl bg-white lg:w-[70%] 2sm:w-[95%] '
       }
     >
-      <div className=" flex justify-center items-center my-10 mx-auto w-6/12">
+      <div className=" flex justify-center items-center my-10 mx-auto w-6/12 lg:w-8/12 sm:w-9/12">
         {previewUrl ? (
           <img src={previewUrl} alt="Preview" />
-        ) : session?.user.provider === 'credentials' ? (
-          <img
-            src={`${supabaseUrl}/storage/v1/object/public/profile-images/${session.user.image}`}
-            alt="userImage"
-          />
         ) : (
           <img src={session?.user.image} alt="userImage" />
         )}
       </div>
-      <div className="flex justify-between py-4 gap-[350px]">
-        <div className=" relative w-[80px] h-[36px] overflow-hidden mt-1">
-          <img src="/Icon/Icon-open.jpg" className=" p-0 pl-1" alt="open" />
+      <div className="flex justify-around py-4 ">
+        <div className=" relative w-[80px] h-[36px] overflow-hidden mt-1.5 border-[#676767] bg-[#676767] text-white">
+          {/* <img src="/Icon/Icon-open.jpg" className=" p-0 pl-1" alt="open" /> */}
           <input
             type="file"
             className=" opacity-100 cursor-pointer top-6 right-0 absolute text-[29px]"
             onChange={handleFileChange}
           />
+          <p className=' text-center leading-8'>파일선택</p>
         </div>
         <div className="flex gap-3 ">
           <button className='className="-my-4 mb-3 border-2 rounded-lg p-2 block font-bold text-[#8D8D8D]  bg-[#f2f4ff]' onClick={handleUploadClick}>저장</button>

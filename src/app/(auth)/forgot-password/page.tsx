@@ -12,9 +12,10 @@ export default function ForgotPassword() {
   const router = useRouter();
 
   return (
-    <div className="flex min-h-screen items-center justify-center">
-      <div className="mx-auto flex w-full max-w-[330px] flex-col gap-8 ">
-        <h1 className="pt-5 text-center text-3xl">비밀번호 변경</h1>
+    <div id="dev"  className=" bg-[url('/img/h_bg.png')]   w-full h-auto  bg-cover bg-center  bg-no-repeat top-0 py-12 lg:px-6 mt-[-152px] mb-[-30px] 2sm:px-2">
+    <div className="w-[40%] lg:w-[60%] 2sm:w-[97%] m-auto bg-white h-auto pb-8 mb-[60px]  rounded-3xl   shadow-lg drop-shadow-sm">
+      <div className="mx-auto flex w-full max-w-[330px] lg:px-4 mt-[165px] flex-col gap-8 2sm:px-2 ">
+        <h1 className=" pt-9 text-center text-3xl">비밀번호 변경</h1>
         <Formik
           initialValues={{
             email: '',
@@ -60,6 +61,7 @@ export default function ForgotPassword() {
           )}
         </Formik>
       </div>
+    </div>
     </div>
   );
 }

@@ -3,8 +3,12 @@
 import { signUpSchema } from '@/libs/validations';
 import axios from 'axios';
 import { Form, Formik } from 'formik';
+import { signIn } from 'next-auth/react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { FcGoogle } from 'react-icons/fc';
+import { RiKakaoTalkFill } from 'react-icons/ri';
+import { SiNaver } from 'react-icons/si';
 import { toast } from 'react-toastify';
 import Button from '../Button';
 import InputFormik from '../InputFormik';
@@ -12,9 +16,38 @@ import InputFormik from '../InputFormik';
 const SignUpForm = () => {
   const router = useRouter();
   return (
-    <div className="flex min-h-screen items-center justify-center">
+    <div id="dev"  className=" bg-[url('/img/h_bg.png')]   w-full h-auto  bg-cover bg-center  bg-no-repeat top-0 py-12 lg:px-6 mt-[-152px] mb-[-30px] 2sm:px-2">
+    <div className="w-[40%] lg:w-[60%] 2sm:w-[97%] m-auto bg-white h-auto pb-8 mb-[60px]  rounded-3xl   shadow-lg drop-shadow-sm">
+      <div className="mx-auto flex w-full max-w-[330px] lg:px-4 mt-[165px] flex-col gap-8 2sm:px-2 ">
       <div className="mx-auto flex w-full max-w-[330px] flex-col gap-8 ">
-        <h1 className="pt-5 text-center text-3xl">회원가입</h1>
+        <h1 className="mt-4 pt-9 text-3xl font-bold text-center leading-8  from-black">회원가입</h1>
+        <div className="mt-4">
+          <p className="my-3 pb-2 text-center text-xl text-[#919191]">간편로그인</p>
+          <button
+              className="flex w-full flex-row items-center justify-center gap-2 rounded-md bg-[#FEE500] px-5 py-3 font-medium text-slate-900 mt-5"
+            onClick={() => signIn('kakao', { redirect: true, callbackUrl: '/' })}
+          >
+            <RiKakaoTalkFill className="text-xl" />
+            카카오로 1초 만에 시작하기
+          </button>
+          <button
+           className="flex w-full flex-row items-center justify-center gap-2 rounded-md bg-[#fff] px-5 py-3 font-medium text-black border-2 mt-5"
+            onClick={() => signIn('naver', { redirect: true, callbackUrl: '/' })}
+          >
+            <SiNaver className="text-xl" />
+            네이버 아이디로 시작하기
+          </button>
+          <button
+            className="flex w-full flex-row items-center justify-center gap-2 rounded-md bg-[#fff] px-5 py-3 font-medium text-black border-2 mt-5"
+            onClick={() => signIn('google', { redirect: true, callbackUrl: '/' })}
+          >
+            <FcGoogle className="text-xl" />
+            구글 아이디로 시작하기
+          </button>
+        </div>
+        <div>
+          <p className="mt-8  text-center text-xl text-[#919191]">이메일로 회원가입</p>
+        </div>
         <Formik
           initialValues={{
             email: '',
@@ -62,7 +95,7 @@ const SignUpForm = () => {
                   touched={touched}
                   errors={errors}
                 />
-                <Image
+                <Image 
                   className=" absolute left-[14px] top-[65px]"
                   src="/Icon/Icon-email.png"
                   alt="Next.js Logo"
@@ -178,7 +211,7 @@ const SignUpForm = () => {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="mt-5 bg-[#5B74E1]"
+                className="my-5 bg-[#5B74E1]"
               >
                 회원가입
               </Button>
@@ -186,7 +219,10 @@ const SignUpForm = () => {
           )}
         </Formik>
       </div>
+  
     </div>
+    </div>  
+  </div>
   );
 };
 

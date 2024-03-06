@@ -1,6 +1,6 @@
 'use client';
 import { cn } from '@/utils/style';
-import { useSession } from 'next-auth/react';
+import { signIn, signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
@@ -77,11 +77,11 @@ const Sidebar: FC = () => {
           <ol className="m-auto py-5 text-center">
             {!session ? (
               <>
-                <li className="cursor-pointer p-2 hover:bg-slate-100">
-                  <input type="button" value="로그인" name="로그인" />
+                <li className="block cursor-pointer p-2 hover:bg-slate-100" onClick={() => signIn()}>
+                  로그인
                 </li>
                 <li className="cursor-pointer p-2 hover:bg-slate-100">
-                  <input type="button" value="회원가입" name="회원가입" />
+                <Link href="/signup">회원가입</Link>
                 </li>
               </>
             ) : (
@@ -89,8 +89,8 @@ const Sidebar: FC = () => {
                 <li className="cursor-pointer p-2 hover:bg-slate-100">
                   {session.user.name} 님
                 </li>
-                <li className="cursor-pointer p-2 hover:bg-slate-100">
-                  <input type="button" value="로그아웃" name="signOut" />
+                <li className="cursor-pointer p-2 hover:bg-slate-100" onClick={() => signOut()}>
+                  로그아웃
                 </li>
               </>
             )}

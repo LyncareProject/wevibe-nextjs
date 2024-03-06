@@ -31,16 +31,17 @@ const EditUserInfoForm = ({ params }: { params: { userId: string } }) => {
     <div id="dev"  className=" bg-[url('/img/h_bg.png')]   w-full h-auto  bg-cover bg-center  bg-no-repeat top-0 py-12 lg:px-6 mt-[-152px] mb-[-30px] 2sm:px-2">
     <div className="w-[40%] lg:w-[60%] 2sm:w-[97%] m-auto bg-white h-auto pb-8 mb-[60px]  rounded-3xl   shadow-lg drop-shadow-sm">
       <div className="mx-auto flex w-full max-w-[330px] lg:px-4 mt-[165px] flex-col gap-8 2sm:px-2 ">
-        <h1 className="pt-5 text-center text-3xl">회원정보 수정</h1>
+        <h1 className="pt-10 text-center text-3xl">회원정보 수정</h1>
         <>
           <button onClick={openModal}>
             <img
-                className="w-[120px] h-[120px]  rounded-full block mt-[10px] mb-[8px]  m-auto "
+                className="w-[140px] h-[140px]  rounded-full block mt-[10px] mb-[8px]  m-auto "
               src={session?.user.image}
               width={200}
               height={200}
               alt={'user'}
             />
+            <span className='text-[#92a4ec] text-lg   underline underline-offset-4'>사진변경</span> 
           </button>
           <ImageChangeModal
             userId={userId}
@@ -50,7 +51,7 @@ const EditUserInfoForm = ({ params }: { params: { userId: string } }) => {
         </>
 
         <Link href="/myproject"> 
-              <Button type="submit"  className="mt-1 flex justify-center text-center font-bold text-[#eee] ">
+              <Button type="submit"  className="mt-5 flex justify-center text-center font-bold text-[#eee] ">
               {/* <Image className=' mt-[3px] mr-3 ] '
                 src="/Icon/Icon-bluekey.png"
                 alt="Next.js Logo"
@@ -167,7 +168,7 @@ const EditUserInfoForm = ({ params }: { params: { userId: string } }) => {
               />
               </div>
 
-              <Link className='mt-2 font-semibold underline ' href="/forgot-password">비밀번호 변경</Link>
+              <Link className='mt-2 font-semibold underline underline-offset-4 ' href="/forgot-password">비밀번호 변경</Link>
 
               
               <Button type="submit" disabled={isSubmitting} className="my-5 flex justify-center text-center font-bold text-[#5B74E1] bg-[#F2F4FF]">

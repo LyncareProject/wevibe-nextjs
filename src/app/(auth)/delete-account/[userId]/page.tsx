@@ -54,7 +54,14 @@ const DeleteAccountForm = ({ params }: { params: { userId: string } }) => {
         >
           {({ isSubmitting, errors, touched }) => (
             <Form className="flex flex-col gap-2 ">
-              <p className='text-center '>{session?.user.image}</p>
+              <p className='text-center '>  
+              <img
+                className="w-[140px] h-[140px]  rounded-full block mt-[10px] mb-[8px]  m-auto "
+              src={session?.user.image}
+              width={200}
+              height={200}
+              alt={'user'}
+            /></p>
               <p className='text-center  text-xl font-semibold' ><span className='text-center text-[#5B74E1]'>{session?.user.name}</span> 님 </p>
               <p className='text-xl text-center font-semibold mb-10'>정말 탈퇴하시겠습니까?</p>
               

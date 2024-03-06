@@ -47,13 +47,16 @@ const Header: FC = () => {
                   <a href="/#WORKS">Works</a>
                 </li>
                 <li className="px-3"></li>
+                <Link
+                href={'/project'}>
                 <li className="px-3">프로젝트 의뢰하기</li>
+                </Link>
               </ul>
 
               <ol
                 className={cn(
                   'mt-3 flex h-[43px] justify-between rounded-full border-[#222]  bg-black px-4 leading-[40px] text-white lg:w-auto lg:mr-4    lg:border-2 lg:bg-white lg:leading-[37px] lg:text-black sm:inline-flex sm:w-[400px]   2sm:hidden '  ,
-                  isOpen && 'hidden'
+                  isOpen && 'invisible'
                 )}
               >
                 {!session ? (
@@ -67,7 +70,7 @@ const Header: FC = () => {
                 ) : (
                   <>
                     <Image
-                      className="mr-[10px] mt-[8px] block size-[25px] rounded-full"
+                      className="mr-[10px] mt-[8px] block size-[25px] rounded-full bg-white"
                       src={session.user.image}
                       width={25}
                       height={25}

@@ -387,8 +387,8 @@ export const clientLocation: ClientLocation = {
 };
 
 export const isFundingAvailableOptions = [
-  '네, 정부지원사업 또는 정부지원 연구과제입니다.',
   '아닙니다.',
+  '네, 정부지원사업 또는 정부지원 연구과제입니다.',
 ];
 export const isFundingAvailableSubOptions = [
   '네, 사업비 지원이 확정되었습니다.',

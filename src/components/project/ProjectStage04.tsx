@@ -25,6 +25,9 @@ const ProjectStage04: React.FC<ProjectStage04Props> = ({ stage }) => {
     expectedStartDate,
     startDateNegotiable,
 
+    expectedEndDate,
+    endDateNegotiable,
+
     expectedDuration,
     durationNegotiable,
 
@@ -36,6 +39,9 @@ const ProjectStage04: React.FC<ProjectStage04Props> = ({ stage }) => {
 
     expectedStartDate: state.expectedStartDate,
     startDateNegotiable: state.startDateNegotiable,
+
+    expectedEndDate: state.expectedEndDate,
+    endDateNegotiable: state.endDateNegotiable,
 
     expectedDuration: state.expectedDuration,
     durationNegotiable: state.durationNegotiable,
@@ -50,7 +56,22 @@ const ProjectStage04: React.FC<ProjectStage04Props> = ({ stage }) => {
   }, []);
 
   const isNextButtonDisabled =
-    !availableBudget || !expectedStartDate || expectedDuration.length === 0;
+    !availableBudget || !expectedStartDate || !expectedEndDate;
+
+  function calculateWeekdays(startDate: Date, endDate: Date) {
+    let weekdaysCount = 0;
+    let currentDate = new Date(startDate);
+
+    while (currentDate <= endDate) {
+      const dayOfWeek = currentDate.getDay();
+      if (dayOfWeek !== 0 && dayOfWeek !== 6) {
+        weekdaysCount++;
+      }
+      currentDate.setDate(currentDate.getDate() + 1);
+    }
+
+    return weekdaysCount;
+  }
 
   return (
     <div className="flex w-full flex-col gap-12 overflow-y-auto px-16 py-10">
@@ -98,7 +119,7 @@ const ProjectStage04: React.FC<ProjectStage04Props> = ({ stage }) => {
         <OptionTitle title={'예상 시작일'} necessary={true} />
         <OptionSubtitle
           subtitle={
-            '파트너가 프로젝트에 착수하는 날짜입니다.\n해당 날짜에 프로젝트 시작이 가능한 파트너들이 지원하게 됩니다.'
+            '프로젝트가 시작되는 날짜입니다.\n해당 날짜에 프로젝트 시작이 가능합니다.'
           }
         />
         <DatepickerComponent
@@ -106,6 +127,8 @@ const ProjectStage04: React.FC<ProjectStage04Props> = ({ stage }) => {
           onChange={(date) => {
             updateState('expectedStartDate', date);
           }}
+          maxDate={expectedEndDate || undefined}
+          minDate={new Date()}
         />
         <SelectLine
           className={cn(startDateNegotiable ? 'text-blue-500' : '')}
@@ -121,15 +144,34 @@ const ProjectStage04: React.FC<ProjectStage04Props> = ({ stage }) => {
             updateState('startDateNegotiable', !startDateNegotiable);
           }}
         />
+        <p className=" py-1"></p>
+        <OptionTitle title={'예상 종료일'} necessary={true} />
+        <OptionSubtitle
+          subtitle={
+            '프로젝트가 종료되는 날짜입니다.\n해당 날짜에 프로젝트가 종료됩니다.'
+          }
+        />
+        <DatepickerComponent
+          value={expectedEndDate}
+          onChange={(date) => {
+            updateState('expectedEndDate', date);
+          }}
+          minDate={expectedStartDate || new Date()}
+        />
       </div>
       <div className="flex w-full flex-col gap-4">
         <OptionTitle title={'예상 진행 기간'} necessary={true} />
         <OptionSubtitle subtitle={'프로젝트 진행 기간을 입력해 주세요.'} />
         <Input
-          value={expectedDuration}
+          value={
+            (expectedStartDate &&
+              expectedEndDate &&
+              calculateWeekdays(expectedStartDate, expectedEndDate)) + '일'
+          }
           onChange={(e) => {
             updateState('expectedDuration', e.target.value);
           }}
+          readOnly
         />
         <SelectLine
           className={cn(durationNegotiable ? 'text-blue-500' : '')}

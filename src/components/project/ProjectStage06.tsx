@@ -11,7 +11,6 @@ import {
   MdOutlineCheckBox,
   MdOutlineCheckBoxOutlineBlank,
 } from 'react-icons/md';
-import DatepickerComponent from '../DatePicker';
 import ProjectInput from '../ProjectInput';
 import SelectLine from '../SelectLine';
 import OptionSubtitle from './OptionSubtitle';
@@ -53,7 +52,7 @@ const ProjectStage06: React.FC<ProjectStage06Props> = ({ stage }) => {
 
   return (
     <div className="flex w-full flex-col gap-12 overflow-y-auto px-16 py-10">
-      <div className="flex w-full flex-col gap-4">
+      {/* <div className="flex w-full flex-col gap-4">
         <OptionTitle title={'지원자 모집 마감일'} necessary={true} />
         <OptionSubtitle
           subtitle={
@@ -66,8 +65,8 @@ const ProjectStage06: React.FC<ProjectStage06Props> = ({ stage }) => {
             updateState('applicationDeadline', date);
           }}
         />
-      </div>
-      <div className="flex w-full flex-col gap-4">
+      </div> */}
+      <div className="flex w-full flex-col gap-4 ">
         <OptionTitle title={'지원사업 여부'} necessary={true} />
         {isFundingAvailableOptions.map((option, index) => (
           <SelectLine
@@ -86,7 +85,7 @@ const ProjectStage06: React.FC<ProjectStage06Props> = ({ stage }) => {
             }}
           />
         ))}
-        {isFundingAvailable === '아닙니다.' && (
+        {isFundingAvailable === '네, 정부지원사업 또는 정부지원 연구과제입니다.' && (
           <div className="flex flex-col gap-4 border-l-4 border-slate-300 py-2 pl-5">
             <OptionSubtitle
               subtitle={
@@ -116,9 +115,9 @@ const ProjectStage06: React.FC<ProjectStage06Props> = ({ stage }) => {
         )}
       </div>
       <div className="flex w-full flex-col gap-4">
-        <OptionTitle title={'지원자 필수 요건'} necessary={false} />
+        <OptionTitle title={'필수 요건'} necessary={false} />
         <OptionSubtitle
-          subtitle={'아래 조건에 맞는 파트너를 지원자로 받습니다.'}
+          subtitle={'아래 조건을 원합니다.'}
         />
         {applicantRequirementsOptions.map((option, index) => (
           <div key={index}>
@@ -186,9 +185,9 @@ const ProjectStage06: React.FC<ProjectStage06Props> = ({ stage }) => {
         ))}
       </div>
       <ProjectInput
-        title={'사전 검증 질문'}
+        title={'사전 질문'}
         necessary={false}
-        subtitle={'프로젝트 지원자에게 질문하고 싶은 내용을 작성해주세요.'}
+        subtitle={'프로젝트관련 질문하고 싶은 내용을 작성해주세요.'}
         value={preliminaryVerificationQuestions}
         onChange={(text) => {
           updateState('preliminaryVerificationQuestions', text);

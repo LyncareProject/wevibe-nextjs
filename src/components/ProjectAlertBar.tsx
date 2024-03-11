@@ -30,10 +30,10 @@ const ProjectAlertBar = () => {
             await router.push(`/project/${pageNumber}`);
           }
         }}
-        className="flex w-full cursor-pointer items-center justify-center bg-red-500 py-4"
+        className="z-10 flex w-full cursor-pointer items-center justify-center bg-red-500 pt-3 pb-4"
       >
         <p className="text-lg font-semibold text-white">
-          작성하시던 프로젝트 의뢰가 있습니다.
+          프토젝트 이어서 작성하기(클릭)
         </p>
       </div>
     );

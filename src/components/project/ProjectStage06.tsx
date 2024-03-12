@@ -85,7 +85,8 @@ const ProjectStage06: React.FC<ProjectStage06Props> = ({ stage }) => {
             }}
           />
         ))}
-        {isFundingAvailable === '네, 정부지원사업 또는 정부지원 연구과제입니다.' && (
+        {isFundingAvailable ===
+          '네, 정부지원사업 또는 정부지원 연구과제입니다.' && (
           <div className="flex flex-col gap-4 border-l-4 border-slate-300 py-2 pl-5">
             <OptionSubtitle
               subtitle={
@@ -115,10 +116,8 @@ const ProjectStage06: React.FC<ProjectStage06Props> = ({ stage }) => {
         )}
       </div>
       <div className="flex w-full flex-col gap-4">
-        <OptionTitle title={'필수 요건'} necessary={false} />
-        <OptionSubtitle
-          subtitle={'아래 조건을 원합니다.'}
-        />
+        <OptionTitle title={'클라이언트 정보'} necessary={false} />
+        <OptionSubtitle subtitle={'아래 조건을 원합니다.'} />
         {applicantRequirementsOptions.map((option, index) => (
           <div key={index}>
             <SelectLine

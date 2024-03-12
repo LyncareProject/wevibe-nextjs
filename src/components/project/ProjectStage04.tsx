@@ -73,6 +73,20 @@ const ProjectStage04: React.FC<ProjectStage04Props> = ({ stage }) => {
     return weekdaysCount;
   }
 
+  useEffect(() => {
+    if (
+      expectedStartDate &&
+      expectedEndDate &&
+      expectedStartDate !== expectedEndDate
+    ) {
+      const duration = `${calculateWeekdays(
+        expectedStartDate,
+        expectedEndDate
+      )}일`;
+      updateState('expectedDuration', duration);
+    }
+  }, [expectedStartDate, expectedEndDate, updateState]);
+
   return (
     <div className="flex w-full flex-col gap-12 overflow-y-auto px-16 py-10">
       <div className="flex w-full flex-col gap-4">
@@ -171,7 +185,6 @@ const ProjectStage04: React.FC<ProjectStage04Props> = ({ stage }) => {
           onChange={(e) => {
             updateState('expectedDuration', e.target.value);
           }}
-          readOnly
         />
         <SelectLine
           className={cn(durationNegotiable ? 'text-blue-500' : '')}

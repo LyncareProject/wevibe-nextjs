@@ -28,7 +28,7 @@ const MyProjectList: React.FC<MyProjectListProps> = ({ projects }) => {
                   href={'/myproject/' + project.id}
                 >
                   {format(new Date(project.createdAt), 'yyyy년 MM월 dd일')}{' '}
-                  {project.projectTitle} 의뢰
+                  {project.projectTitle}
                 </Link>
               ))}
           </div>

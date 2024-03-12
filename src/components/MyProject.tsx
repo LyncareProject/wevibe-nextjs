@@ -21,7 +21,7 @@ const MyProject: React.FC<MyProjectProps> = ({ project }) => {
           <div className="container flex flex-col gap-5  px-4 ">
             <div className="-mb-3 flex justify-between sm:block">
               <p className=" text-sm text-[#9e9e9e] sm:mb-2 ">
-                카테고리 : {project.projectCategory}
+                카테고리 : {JSON.parse(project.projectCategory)}
               </p>
               <p className="text-right text-sm text-[#9e9e9e] ">
                 등록일 {format(new Date(project.createdAt), 'yyyy. MM. dd')}
@@ -44,11 +44,30 @@ const MyProject: React.FC<MyProjectProps> = ({ project }) => {
               <p>{project.budgetNegotiable}</p>
               <p>
                 {' '}
+                <Image
+                  className="mb-1 mr-2 inline-block "
+                  src="/Icon/icon-clock.png"
+                  alt="icon-korean-won"
+                  width={18}
+                  height={30}
+                />
                 예상 시작일 :{' '}
                 {format(
                   new Date(project.expectedStartDate),
                   'yyyy년 MM월 dd일'
                 )}
+              </p>
+              <p>
+                {' '}
+                <Image
+                  className="mb-1 mr-2 inline-block "
+                  src="/Icon/icon-clock.png"
+                  alt="icon-korean-won"
+                  width={18}
+                  height={30}
+                />
+                예상 종료일 :{' '}
+                {format(new Date(project.expectedEndDate), 'yyyy년 MM월 dd일')}
               </p>
               <p>{project.startDateNegotiable}</p>
               <p>
@@ -60,7 +79,7 @@ const MyProject: React.FC<MyProjectProps> = ({ project }) => {
                   width={18}
                   height={30}
                 />
-                예상 진행 기간 : {project.expectedDuration}일
+                예상 진행 기간 : {project.expectedDuration}
               </p>
               <p>{project.durationNegotiable}</p>
             </div>
@@ -69,15 +88,6 @@ const MyProject: React.FC<MyProjectProps> = ({ project }) => {
 
             {/* 모집 마감 + 관련정보 */}
             <div className=" text-base  leading-8  ">
-              <div className="flex">
-                <p className="w-[150px] text-[#757575]   ">• 모집 마감일 </p>
-                <p>
-                  {format(
-                    new Date(project.applicationDeadline),
-                    'yyyy년 MM월 dd일'
-                  )}
-                </p>
-              </div>
               <div className="flex">
                 <p className="w-[150px]  text-[#757575]   ">• 진행 분류 </p>
                 <p>{project.projectProgressClassification}</p>
@@ -106,7 +116,9 @@ const MyProject: React.FC<MyProjectProps> = ({ project }) => {
                 </p>
               </div>
               <div className="flex">
-                <p className="text-[#757575]">{project.interestedProducts}</p>
+                <p className="text-[#757575]">
+                  {JSON.parse(project.interestedProducts)}
+                </p>
               </div>
             </div>
 
@@ -115,19 +127,27 @@ const MyProject: React.FC<MyProjectProps> = ({ project }) => {
             {/* 프로젝트 내용 */}
             <h4 className="  text-xl  font-semibold ">프로젝트 내용</h4>
             <div className=" text-base text-[#4f4f4f]">
-              <p>프로젝트 분야 : {project.projectField}</p>
+              <p>프로젝트 분야 : {JSON.parse(project.projectField)}</p>
               <br />
-              <p>상세 기획 상태 : {project.detailedPlanningStatus}</p>
+              <p className="flex flex-col">
+                상세 기획 상태 :
+                {project.detailedPlanningStatus &&
+                  JSON.parse(project.detailedPlanningStatus)}
+              </p>
               <br />
               <p>기획문서 : {project.detailedPlanningText}</p>
               <br />
-              <p>프로젝트 관련 기술 : {project.relatedTechnologies}</p>
+              <p>
+                프로젝트 관련 기술 :{' '}
+                {project.relatedTechnologies &&
+                  JSON.parse(project.relatedTechnologies)}
+              </p>
               <br />
               <p>상세 업무 내용 : {project.detailedTaskDescription}</p>
               <br />
-              <p>참고 자료 : {project.referenceMaterials}</p>
+              <p>참고 자료 : {JSON.parse(project.referenceMaterials || '')}</p>
               <br />
-              <p>향후 계획 : {project.futurePlans}</p>
+              <p>향후 계획 : {JSON.parse(project.futurePlans || '')}</p>
             </div>
             <hr />
 
@@ -151,16 +171,16 @@ const MyProject: React.FC<MyProjectProps> = ({ project }) => {
             <hr />
 
             {/* 모집요건 */}
-            <h3 className="  mb-3  text-xl font-semibold"> 모집 요건</h3>
+
             <h5 className="text-lg ">정부지원사업 여부</h5>
             <div className="mb-3 text-base leading-8 text-[#4f4f4f]">
               <p>지원사업 여부 : {project.isFundingAvailable}</p>
               <p>{project.isFundingAvailableSub}</p>
             </div>
-            <h5 className="text-lg">지원자 필수요건</h5>
+            <h5 className="text-lg">클라이언트 정보</h5>
             <div className="text-base leading-8 text-[#4f4f4f]">
-              <p>{project.applicantRequirements}</p>
-              <p>{project.applicantRequirementsSub}</p>
+              <p>{JSON.parse(project.applicantRequirements || '')}</p>
+              <p>{JSON.parse(project.applicantRequirementsSub || '')}</p>
               <p>{project.isCollaborationTeamComposition}</p>
               <hr className="my-4 opacity-70" />
               <h5 className="mb-3 text-lg  text-black">사전 검증 질문 :</h5>

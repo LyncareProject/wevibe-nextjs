@@ -39,7 +39,12 @@ const ProjectStage05: React.FC<ProjectStage05Props> = ({ stage }) => {
     toggleArrayItem: state.toggleArrayItem,
   }));
 
-  const isNextButtonDisabled = preMeetingMethod.length === 0 || !meetingMethod || !meetingFrequency || !clientLocationCity || !clientLocationDistrict;
+  const isNextButtonDisabled =
+    preMeetingMethod.length === 0 ||
+    !meetingMethod ||
+    !meetingFrequency ||
+    !clientLocationCity ||
+    !clientLocationDistrict;
 
   return (
     <div className="flex w-full flex-col gap-12 overflow-y-auto px-16 py-10">
@@ -47,7 +52,7 @@ const ProjectStage05: React.FC<ProjectStage05Props> = ({ stage }) => {
         <OptionTitle title={'사전 미팅 방식'} necessary={true} />
         <OptionSubtitle
           subtitle={
-            '클라이언트님에게 편한 미팅 방식으로 파트너와의 미팅 조율을 도와드립니다.'
+            '클라이언트에게 편한 미팅 방식으로 미팅 조율을 도와드립니다.'
           }
         />
         {preMeetingMethodOptions.map((option, index) => (
@@ -111,9 +116,7 @@ const ProjectStage05: React.FC<ProjectStage05Props> = ({ stage }) => {
       <div className="flex w-full flex-col gap-4">
         <OptionTitle title={'클라이언트 위치'} necessary={true} />
         <OptionSubtitle
-          subtitle={
-            '파트너가 미팅 위치 선정시 클라이언트님의 위치를 참고합니다.'
-          }
+          subtitle={'미팅 위치 선정시 클라이언트의 위치를 참고합니다.'}
         />
         <div className="flex w-full gap-4">
           <select

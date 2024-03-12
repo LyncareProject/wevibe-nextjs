@@ -32,14 +32,7 @@ export const categoryOptions: CategoryOption[] = [
 export const fieldOptions: FieldOption[] = [
   {
     category: '개발',
-    selects: [
-      '웹',
-      '어플리케이션',
-      '커머스, 쇼핑몰',
-      '퍼블리싱',
-      '워드프레스',
-      '임베디드',
-    ],
+    selects: ['웹', '어플리케이션', '커머스, 쇼핑몰', '퍼블리싱', '워드프레스'],
   },
   {
     category: '디자인',
@@ -62,7 +55,6 @@ export const fieldOptions: FieldOption[] = [
       '어플리케이션',
       '커머스, 쇼핑몰',
       '워드프레스',
-      '임베디드',
       '제품',
       '프레젠테이션',
       '인쇄물',

@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     siteName: '위바이브 주식회사',
     images: [
       {
-        url: '/img/d,e,a.png',
+        url: 'https://opengraph.b-cdn.net/production/documents/bd8ec256-af61-4614-9905-6db9603bac09.png?token=sKtoM0ytMD287bX4PAqOuFWrXEmweidCVXkocs4o7Fc&height=310&width=751&expires=33246295156',
         width: 1200,
         height: 630,
       },
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
       '위바이브는 유저의 경험 데이터가 차이를 만들어낸다고 믿습니다. 위바이브는 AI 기반으로 지속 발전 가능한 성장 모델을 발굴하여 새로운 경험과 가능성을 모색합니다.',
     images: [
       {
-        url: '/img/d,e,a.png',
+        url: 'https://opengraph.b-cdn.net/production/documents/bd8ec256-af61-4614-9905-6db9603bac09.png?token=sKtoM0ytMD287bX4PAqOuFWrXEmweidCVXkocs4o7Fc&height=310&width=751&expires=33246295156',
         width: 1200,
         height: 630,
       },

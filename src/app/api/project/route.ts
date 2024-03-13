@@ -50,7 +50,7 @@ export async function POST(req: Request) {
       data: {
         userId,
         projectCategory: JSON.stringify(projectCategory),
-        projectField: JSON.stringify(projectField),
+        projectField: JSON.stringify(projectField, null, 2),
         projectProgressClassification,
         planningStatus,
         detailedPlanningStatus: JSON.stringify(detailedPlanningStatus),

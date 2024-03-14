@@ -14,7 +14,7 @@ const Header: FC = () => {
     <div className="w-full sm:m-auto   sm:w-[97%] 2sm:w-[95%] ">
       <div className=" m-auto flex h-32 flex-col justify-between justify-items-center py-6 md:justify-between  ">
         <header className="z-[10] h-32">
-          <nav className="lg:space-between m-auto flex max-w-[1200px] justify-around justify-items-center 2sm:justify-between">
+          <nav className="m-auto flex max-w-[1200px] justify-around justify-items-center 2sm:justify-between">
             <p className="w-[10%] cursor-pointer lg:w-[20%] 2sm:ml-4 2sm:w-[30%] ">
               <Link href="/">
                 <Image

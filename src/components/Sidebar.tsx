@@ -89,9 +89,11 @@ const Sidebar: FC = () => {
               </>
             ) : (
               <>
-                <li className="cursor-pointer p-2 hover:bg-slate-100">
-                  {session.user.name} 님
-                </li>
+                <Link href={`/mypage/${session?.user.userId}`}>
+                  <li className="cursor-pointer p-2 hover:bg-slate-100">
+                    {session.user.name} 님
+                  </li>
+                </Link>
                 <li
                   className="cursor-pointer p-2 hover:bg-slate-100"
                   onClick={() => signOut()}

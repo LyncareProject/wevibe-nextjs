@@ -111,7 +111,7 @@ const MyProject: React.FC<MyProjectProps> = ({ project }) => {
                 <p>
                   {' '}
                   1순위 - {project.projectPriorityFirst}&nbsp;&nbsp;&nbsp; 2순위
-                  - {project.projectPrioritySecond}&nbsp;&nbsp;&nbsp; 3순위 -{' '}
+                  - {project.projectPrioritySecond}&nbsp;&nbsp;&nbsp; 3순위 -
                   {project.projectPriorityThird}
                 </p>
               </div>
@@ -127,7 +127,9 @@ const MyProject: React.FC<MyProjectProps> = ({ project }) => {
             {/* 프로젝트 내용 */}
             <h4 className="  text-xl  font-semibold ">프로젝트 내용</h4>
             <div className=" text-base text-[#4f4f4f]">
-              <p>프로젝트 분야 : {JSON.parse(project.projectField)}</p>
+              <p>
+                프로젝트 분야 : {JSON.parse(project.projectField) as String[]}
+              </p>
               <br />
               <p className="flex flex-col">
                 상세 기획 상태 :

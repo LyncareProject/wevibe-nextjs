@@ -34,7 +34,7 @@ const EditUserInfoForm = ({ params }: { params: { userId: string } }) => {
               height={25}
               alt={'user'}
             />
-            <span className="color-[#95a5ed] block">사진변경</span>
+            <span className="block text-[#95a5ed]">사진변경</span>
           </p>
 
           <Link href="/myproject">

@@ -5,6 +5,7 @@ import { resignReasonSchema } from '@/libs/validations';
 import axios from 'axios';
 import { Form, Formik } from 'formik';
 import { signOut, useSession } from 'next-auth/react';
+import Image from 'next/image';
 import { redirect, useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import InputFormik from '../../../../components/InputFormik';
@@ -59,9 +60,9 @@ const DeleteAccountForm = ({ params }: { params: { userId: string } }) => {
             {({ isSubmitting, errors, touched }) => (
               <Form className="flex flex-col gap-2 ">
                 <p className="text-center ">
-                  <img
+                  <Image
                     className="m-auto mb-[8px]  mt-[10px] block size-[140px] rounded-full "
-                    src={session?.user.image}
+                    src={session?.user.image!}
                     width={200}
                     height={200}
                     alt={'user'}

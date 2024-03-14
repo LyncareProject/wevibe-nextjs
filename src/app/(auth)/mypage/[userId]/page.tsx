@@ -37,9 +37,9 @@ const EditUserInfoForm = ({ params }: { params: { userId: string } }) => {
           <h1 className="pt-10 text-center text-3xl">회원정보 수정</h1>
           <>
             <button onClick={openModal}>
-              <img
+              <Image
                 className="m-auto mb-[8px]  mt-[10px] block size-[140px] rounded-full "
-                src={session?.user.image}
+                src={session?.user.image!}
                 width={200}
                 height={200}
                 alt={'user'}

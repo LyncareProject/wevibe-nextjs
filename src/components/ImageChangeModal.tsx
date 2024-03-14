@@ -1,6 +1,7 @@
 import { supabaseClient } from '@/utils/supabase';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
+import Image from 'next/image';
 import { useState } from 'react';
 import Modal from 'react-modal';
 import { v4 as uuidv4 } from 'uuid';
@@ -61,29 +62,42 @@ const ImageChangeModal = ({
       contentLabel="Image Change Modal"
       ariaHideApp={false}
       className={
-        ' relative top-24  justify-center items-center mt-6  mx-auto flex-col w-6/12 border border-slate-300 rounded-xl bg-white lg:w-[70%] 2sm:w-[95%] '
+        ' relative top-24  mx-auto mt-6 w-6/12  flex-col items-center justify-center rounded-xl border border-slate-300 bg-white lg:w-[70%] 2sm:w-[95%] '
       }
     >
-      <div className=" flex justify-center items-center mt-10 mb-4  mx-auto w-6/12 lg:w-8/12 sm:w-9/12">
+      <div className=" mx-auto mb-4 mt-10 flex w-6/12  items-center justify-center sm:w-9/12 lg:w-8/12">
         {previewUrl ? (
-          <img className='max-h-[550px]  2sm:max-h-[440px]' src={previewUrl} alt="Preview" />
+          <Image
+            className="max-h-[550px]  2sm:max-h-[440px]"
+            src={previewUrl}
+            alt="Preview"
+          />
         ) : (
-          <img src={session?.user.image} alt="userImage" />
+          <Image src={session?.user.image!} alt="userImage" />
         )}
       </div>
-      <div className="flex justify-around py-4 m5-4 ">
-        <div className=" relative w-[80px] h-[36px] overflow-hidden mt-1.5  text-white">
+      <div className="m-4 flex justify-around py-4 ">
+        <div className=" relative mt-1.5 h-[36px] w-[80px] overflow-hidden  text-white">
           {/* <img src="/Icon/Icon-open.jpg" className=" p-0 pl-1" alt="open" /> */}
           <input
             type="file"
-            className="cursor-pointer h-auto mt-0.5 "
+            className="mt-0.5 h-auto cursor-pointer "
             onChange={handleFileChange}
           />
-          
         </div>
         <div className="flex gap-3 ">
-          <button className='className="-my-4 mb-3 border-2 rounded-lg p-2 px-4 block font-bold text-[#8D8D8D]  bg-[#f2f4ff]' onClick={handleUploadClick}>저장</button>
-          <button className='className="-my-4 mb-3 border-2 rounded-lg p-2 px-4 block  font-bold text-[#8D8D8D] ' onClick={() => onRequestClose()}>닫기</button>
+          <button
+            className="my-4 mb-3 block rounded-lg border-2 bg-[#f2f4ff] p-2 px-4 font-bold  text-[#8D8D8D]"
+            onClick={handleUploadClick}
+          >
+            저장
+          </button>
+          <button
+            className='-my-4 mb-3 block rounded-lg border-2 p-2 px-4  font-bold text-[#8D8D8D]'
+            onClick={() => onRequestClose()}
+          >
+            닫기
+          </button>
         </div>
       </div>
     </Modal>

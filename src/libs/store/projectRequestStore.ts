@@ -16,6 +16,8 @@ export interface ProjectRequestState {
   budgetNegotiable: boolean;
   expectedStartDate: Date | null;
   startDateNegotiable: boolean;
+  expectedEndDate: Date | null;
+  endDateNegotiable: boolean;
   expectedDuration: string;
   durationNegotiable: boolean;
   preMeetingMethod: string;
@@ -72,13 +74,17 @@ export const initialState = {
   detailedPlanningText: '',
   referenceMaterials: [],
   projectTitle: '',
-  detailedTaskDescription: '<프로젝트의 현재 상황>\n예시) 프로젝트 목적, 타겟 고객, 진행 계획 등\n\n<상세한 업무 내용>\n예시) 상품의 용도, 작업 분량, 필요한 조건 등\n\n<참고자료 / 유의사항>\n예시) 참고 제품 등',
+  detailedTaskDescription:
+    '<프로젝트의 현재 상황>\n예시) 프로젝트 목적, 타겟 고객, 진행 계획 등\n\n<상세한 업무 내용>\n예시) 상품의 용도, 작업 분량, 필요한 조건 등\n\n<참고자료 / 유의사항>\n예시) 참고 제품 등',
   relatedTechnologies: [],
   availableBudget: 0,
   budgetNegotiable: false,
 
   expectedStartDate: null,
   startDateNegotiable: false,
+
+  expectedEndDate: null,
+  endDateNegotiable: false,
 
   expectedDuration: '',
   durationNegotiable: false,

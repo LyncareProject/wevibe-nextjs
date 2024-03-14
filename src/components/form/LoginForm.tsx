@@ -40,14 +40,14 @@ const LoginForm = () => {
     /* eslint-disable-next-line */
     <div
       id="dev"
-      className=" top-0 mb-[-30px] mt-[-152px] h-auto w-full bg-[url('/img/h_bg.png')] bg-cover bg-center bg-no-repeat py-12 lg:px-6 2sm:px-2"
+      className=" top-0   mb-[-30px] mt-[-152px]  h-auto w-full  bg-[url('/img/h_bg.png')] bg-cover bg-center bg-no-repeat py-12 lg:px-6 2sm:px-2"
     >
       <div className="m-auto mb-[60px] h-auto w-[40%] rounded-3xl bg-white pb-8 shadow-lg  drop-shadow-sm   lg:w-[60%] 2sm:w-[97%]">
         <div className="mx-auto mt-[165px] flex w-full max-w-[330px] flex-col gap-8 lg:px-4 2sm:px-2 ">
           <h2 className="mt-4 from-black pt-9 text-center text-3xl font-bold  leading-8">
             로그인
           </h2>
-          <div className="mt-3">
+          <div className="mt-8">
             <button
               className="mt-5 flex w-full flex-row items-center justify-center gap-2 rounded-md bg-[#FEE500] px-5 py-3 font-medium text-slate-900"
               onClick={() =>
@@ -55,16 +55,16 @@ const LoginForm = () => {
               }
             >
               <RiKakaoTalkFill className="text-xl" />
-              카카오로 1초 만에 시작하기
+              카카오로 1초 만에 가입하기
             </button>
             <button
-              className="mt-5 flex w-full flex-row items-center justify-center gap-2 rounded-md border-2 bg-[#fff] px-5 py-3 font-medium text-black"
+              className="mt-5 flex w-full flex-row items-center justify-center gap-2 rounded-md bg-[#00C900] px-5 py-3 font-medium text-white"
               onClick={() =>
                 signIn('naver', { redirect: true, callbackUrl: '/' })
               }
             >
               <SiNaver className="text-xl" />
-              네이버 아이디로 시작하기
+              네이버 아이디로 가입하기
             </button>
             <button
               className="mt-5 flex w-full flex-row items-center justify-center gap-2 rounded-md border-2 bg-[#fff] px-5 py-3 font-medium text-black"
@@ -73,7 +73,7 @@ const LoginForm = () => {
               }
             >
               <FcGoogle className="text-xl" />
-              구글 아이디로 시작하기
+              구글 아이디로 가입하기
             </button>
           </div>
           <div>

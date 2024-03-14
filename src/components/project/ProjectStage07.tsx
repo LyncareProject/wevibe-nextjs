@@ -54,7 +54,7 @@ const ProjectStage07: React.FC<ProjectStage07Props> = ({ userId, stage }) => {
         <OptionTitle title={'협업 인력 구성'} necessary={true} />
         <OptionSubtitle
           subtitle={
-            '파트너와 협업 예정인 인력이 있다면 어떻게 구성되어 있는지 알려주세요.'
+            '협업 예정인 인력이 있다면 어떻게 구성되어 있는지 알려주세요.'
           }
         />
         <Input
@@ -77,7 +77,7 @@ const ProjectStage07: React.FC<ProjectStage07Props> = ({ userId, stage }) => {
               <MdOutlineCheckBoxOutlineBlank />
             )
           }
-          context={'파트너와 협업 가능한 인력이 없습니다.'}
+          context={'협업 가능한 인력이 없습니다.'}
           onClick={() => {
             updateState(
               'isCollaborationTeamComposition',
@@ -135,7 +135,7 @@ const ProjectStage07: React.FC<ProjectStage07Props> = ({ userId, stage }) => {
         <OptionTitle title={'프로젝트 우선순위'} necessary={false} />
         <OptionSubtitle
           subtitle={
-            '프로젝트 우선순위를 파트너에게 알려주시면, 파트너가 우선순위를 고려하여 지원합니다.'
+            '프로젝트 우선순위를 알려주시면, 우선순위를 고려하여 지원합니다.'
           }
         />
         <div className="flex w-full gap-4">

@@ -36,7 +36,8 @@ const ProjectStage02: React.FC<ProjectStage02Props> = ({ stage }) => {
     toggleArrayItem: state.toggleArrayItem,
   }));
 
-  const isNextButtonDisabled = projectProgressClassification.length === 0 || planningStatus.length === 0 
+  const isNextButtonDisabled =
+    projectProgressClassification.length === 0 || planningStatus.length === 0;
 
   return (
     <div className="flex w-full flex-col gap-12 overflow-y-auto px-16 py-10">
@@ -147,7 +148,7 @@ const ProjectStage02: React.FC<ProjectStage02Props> = ({ stage }) => {
             <OptionTitle title={'참고 자료'} />
             <OptionSubtitle
               subtitle={
-                '아이디어 또는 필요한 내용을 정리한 자료가 있다면 추가해보세요.\n매니저와의 상담, 파트너들의 견적 산정에 활용됩니다.'
+                '아이디어 또는 필요한 내용을 정리한 자료가 있다면 추가해보세요. \n견적 산정에 활용됩니다.'
               }
             />
             <input

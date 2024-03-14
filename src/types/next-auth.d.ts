@@ -3,7 +3,7 @@ import 'next-auth';
 declare module 'next-auth' {
   interface User {
     id: number;
-    userId : string;
+    userId: string;
     email: string;
     name: string;
     image: string;
@@ -11,7 +11,6 @@ declare module 'next-auth' {
     provider: string;
     company: string;
     rank: string;
-    userId: string;
     createdAt: Date;
     emailVerified: Date;
   }
@@ -21,6 +20,7 @@ declare module 'next-auth' {
       nickname: string;
       profile_image: string;
     };
+    picture: string;
     kakao_account: {
       email: string;
     };

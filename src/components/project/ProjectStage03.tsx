@@ -54,11 +54,7 @@ const ProjectStage03: React.FC<ProjectStage03Props> = ({ stage }) => {
       />
       <div className="flex w-full flex-col gap-4">
         <OptionTitle title={'관련 기술'} necessary={false} />
-        <OptionSubtitle
-          subtitle={
-            '파트너가 전문 기술로 프로젝트를 찾고 지원할 수 있도록 프로젝트와 관련된 기술을 입력해주세요.'
-          }
-        />
+        <OptionSubtitle subtitle={'프로젝트와 관련된 기술을 입력해주세요.'} />
         <ReactSelect
           options={[].map((tag) => ({
             label: tag,

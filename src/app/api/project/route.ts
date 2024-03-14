@@ -20,6 +20,8 @@ export async function POST(req: Request) {
       budgetNegotiable,
       expectedStartDate,
       startDateNegotiable,
+      expectedEndDate,
+      endDateNegotiable,
       expectedDuration,
       durationNegotiable,
       preMeetingMethod,
@@ -43,7 +45,7 @@ export async function POST(req: Request) {
       interestedProducts,
     } = nonFunctionState;
 
-    console.log(nonFunctionState)
+    console.log(nonFunctionState);
     const response = await prisma.project.create({
       data: {
         userId,
@@ -61,6 +63,8 @@ export async function POST(req: Request) {
         budgetNegotiable,
         expectedStartDate,
         startDateNegotiable,
+        expectedEndDate,
+        endDateNegotiable,
         expectedDuration,
         durationNegotiable,
         preMeetingMethod,
@@ -90,7 +94,7 @@ export async function POST(req: Request) {
         interestedProducts: JSON.stringify(interestedProducts),
       },
     });
-    console.log(response)
+    console.log(response);
     return NextResponse.json({ message: '완료', status: 200 });
   } catch (error) {
     return NextResponse.error();

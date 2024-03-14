@@ -32,14 +32,7 @@ export const categoryOptions: CategoryOption[] = [
 export const fieldOptions: FieldOption[] = [
   {
     category: '개발',
-    selects: [
-      '웹',
-      '어플리케이션',
-      '커머스, 쇼핑몰',
-      '퍼블리싱',
-      '워드프레스',
-      '임베디드',
-    ],
+    selects: ['웹', '어플리케이션', '커머스, 쇼핑몰', '퍼블리싱', '워드프레스'],
   },
   {
     category: '디자인',
@@ -62,7 +55,6 @@ export const fieldOptions: FieldOption[] = [
       '어플리케이션',
       '커머스, 쇼핑몰',
       '워드프레스',
-      '임베디드',
       '제품',
       '프레젠테이션',
       '인쇄물',
@@ -387,8 +379,8 @@ export const clientLocation: ClientLocation = {
 };
 
 export const isFundingAvailableOptions = [
-  '네, 정부지원사업 또는 정부지원 연구과제입니다.',
   '아닙니다.',
+  '네, 정부지원사업 또는 정부지원 연구과제입니다.',
 ];
 export const isFundingAvailableSubOptions = [
   '네, 사업비 지원이 확정되었습니다.',

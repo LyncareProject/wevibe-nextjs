@@ -79,6 +79,8 @@ model Project {
   budgetNegotiable                 Boolean?
   expectedStartDate                DateTime
   startDateNegotiable              Boolean?
+  expectedEndDate                DateTime
+  endDateNegotiable              Boolean?
   expectedDuration                 String
   durationNegotiable               Boolean?
   preMeetingMethod                 String

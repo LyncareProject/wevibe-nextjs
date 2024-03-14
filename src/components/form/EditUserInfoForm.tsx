@@ -20,10 +20,10 @@ const EditUserInfoForm = ({ params }: { params: { userId: string } }) => {
   return (
     <div
       id="dev"
-      className=" top-0 mb-[-30px] mt-[-152px] h-auto w-full  bg-[url('/img/h_bg.png')] bg-cover bg-center bg-no-repeat py-12 lg:px-6 2sm:px-2"
+      className=" top-0   mb-[-30px] mt-[-152px]  h-auto w-full  bg-[url('/img/h_bg.png')] bg-cover bg-center bg-no-repeat py-12 lg:px-6"
     >
-      <div className="m-auto mb-[60px] h-auto w-[40%] rounded-3xl bg-white pb-8 shadow-lg  drop-shadow-sm   lg:w-[60%] 2sm:w-[97%]">
-        <div className="mx-auto mt-[165px] flex w-full max-w-[330px] flex-col gap-8 lg:px-4 2sm:px-2 ">
+      <div className="m-auto mb-[60px] h-auto w-[60%] rounded-3xl bg-white  pb-8   shadow-lg drop-shadow-sm">
+        <div className="mx-auto mt-[165px] flex w-full max-w-[330px] flex-col gap-8 py-6 lg:px-4 ">
           <h1 className="mt-4 pt-5 text-center text-3xl">마이페이지</h1>
           <p>
             <Image
@@ -34,6 +34,7 @@ const EditUserInfoForm = ({ params }: { params: { userId: string } }) => {
               height={25}
               alt={'user'}
             />
+            <span className="block text-[#95a5ed]">사진변경</span>
           </p>
 
           <Link href="/myproject">

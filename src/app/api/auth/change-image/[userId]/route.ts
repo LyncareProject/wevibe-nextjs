@@ -11,12 +11,11 @@ export async function POST(
     const session = await getServerSession(authOptions);
     const body = await request.json();
     const { userId } = params;
-    const { email, image, name, company, rank } = body;
+    const { image } = body;
 
     const user = await prisma.user.findUnique({
       where: {
         userId,
-        email,
       },
     });
 
@@ -35,21 +34,15 @@ export async function POST(
       return new NextResponse('Unauthorized', { status: 401 });
     }
 
-    const updatedUser = await prisma.user.update({
+    const updateImage = await prisma.user.update({
       where: {
         userId,
-        email,
       },
       data: {
-        email,
         image,
-        name,
-        company,
-        rank,
       },
     });
-
-    return NextResponse.json(updatedUser);
+    return NextResponse.json(updateImage);
   } catch (error) {
     return new NextResponse('Error', { status: 500 });
   }

@@ -8,6 +8,85 @@ interface MyProjectProps {
   project: Project;
 }
 const MyProject: React.FC<MyProjectProps> = ({ project }) => {
+  console.log(project);
+
+  const projectCategoryObj = project.projectCategory;
+  const projectCategory = projectCategoryObj
+    .split('"')
+    .join('')
+    .split('[')
+    .join('')
+    .split(']')
+    .join('')
+    .split(',')
+    .join(', ');
+
+  const projectFieldObj = project.projectField;
+  const projectField = projectFieldObj
+    .split('"')
+    .join('')
+    .split('[')
+    .join('')
+    .split(']')
+    .join('')
+    .split(',')
+    .join(', ');
+
+  const detailedPlanningStatusObj = project.detailedPlanningStatus;
+  const detailedPlanningStatus = detailedPlanningStatusObj
+    ?.split('"')
+    .join('')
+    .split('[')
+    .join('')
+    .split(']')
+    .join('')
+    .split(',')
+    .join('\n - ');
+
+  const relatedTechnologiesObj = project.relatedTechnologies;
+  const relatedTechnologies = relatedTechnologiesObj
+    ?.split('"')
+    .join('')
+    .split('[')
+    .join('')
+    .split(']')
+    .join('')
+    .split(',')
+    .join(', ');
+
+  const applicantRequirementsSubObj = project.applicantRequirementsSub;
+  const applicantRequirementsSub = applicantRequirementsSubObj
+    ?.split('"')
+    .join('')
+    .split('[')
+    .join('')
+    .split(']')
+    .join('')
+    .split(',')
+    .join(', ');
+
+  const futurePlansObj = project.futurePlans;
+  const futurePlans = futurePlansObj
+    ?.split('"')
+    .join('')
+    .split('[')
+    .join('')
+    .split(']')
+    .join('')
+    .split(',')
+    .join('\n - ');
+
+  const applicantRequirementsObj = project.applicantRequirements;
+  const applicantRequirements = applicantRequirementsObj
+    ?.split('"')
+    .join('')
+    .split('[')
+    .join('')
+    .split(']')
+    .join('')
+    .split(',')
+    .join('\n ');
+
   return (
     <div
       id="dev"
@@ -21,7 +100,7 @@ const MyProject: React.FC<MyProjectProps> = ({ project }) => {
           <div className="container flex flex-col gap-5  px-4 ">
             <div className="-mb-3 flex justify-between sm:block">
               <p className=" text-sm text-[#9e9e9e] sm:mb-2 ">
-                카테고리 : {JSON.parse(project.projectCategory)}
+                카테고리 : {projectCategory}
               </p>
               <p className="text-right text-sm text-[#9e9e9e] ">
                 등록일 {format(new Date(project.createdAt), 'yyyy. MM. dd')}
@@ -39,7 +118,8 @@ const MyProject: React.FC<MyProjectProps> = ({ project }) => {
                   width={18}
                   height={30}
                 />
-                지출 가능 예산 : {project.availableBudget}원
+                지출 가능 예산 :{' '}
+                {project.availableBudget.toLocaleString('ko-KR')}원
               </p>
               <p>{project.budgetNegotiable}</p>
               <p>
@@ -127,29 +207,36 @@ const MyProject: React.FC<MyProjectProps> = ({ project }) => {
             {/* 프로젝트 내용 */}
             <h4 className="  text-xl  font-semibold ">프로젝트 내용</h4>
             <div className=" text-base text-[#4f4f4f]">
+              <p className="text-lg font-semibold text-black">프로젝트 분야</p>
               <p>
-                프로젝트 분야 : {JSON.parse(project.projectField) as String[]}
+                {' '}
+                {projectField}
+                {/* {JSON.parse(project.projectField)} */}
               </p>
               <br />
-              <p className="flex flex-col">
-                상세 기획 상태 :
-                {project.detailedPlanningStatus &&
-                  JSON.parse(project.detailedPlanningStatus)}
+              <p className="text-lg font-semibold text-black">상세 기획 상태</p>
+              <p className="whitespace-pre"> - {detailedPlanningStatus}</p>
+              <br />
+              <p className="text-lg font-semibold text-black">기획문서</p>
+              <p> {project.detailedPlanningText}</p>
+              <br />
+              <p className="text-lg font-semibold text-black">
+                프로젝트 관련 기술
+              </p>
+              <p> {relatedTechnologies}</p>
+              <br />
+              <p className="text-lg font-semibold text-black">
+                상세 업무 내용{' '}
+              </p>
+              <p className="whitespace-pre">
+                {project.detailedTaskDescription}
               </p>
               <br />
-              <p>기획문서 : {project.detailedPlanningText}</p>
+              <p className="text-lg font-semibold text-black">참고 자료</p>
+              <p> {JSON.parse(project.referenceMaterials || '')}</p>
               <br />
-              <p>
-                프로젝트 관련 기술 :{' '}
-                {project.relatedTechnologies &&
-                  JSON.parse(project.relatedTechnologies)}
-              </p>
-              <br />
-              <p>상세 업무 내용 : {project.detailedTaskDescription}</p>
-              <br />
-              <p>참고 자료 : {JSON.parse(project.referenceMaterials || '')}</p>
-              <br />
-              <p>향후 계획 : {JSON.parse(project.futurePlans || '')}</p>
+              <p className="text-lg font-semibold text-black">향후 계획</p>
+              <p className="whitespace-pre"> - {futurePlans}</p>
             </div>
             <hr />
 
@@ -157,16 +244,16 @@ const MyProject: React.FC<MyProjectProps> = ({ project }) => {
             <h3 className="  text-xl  font-semibold"> 미팅방식</h3>
             <div className="flex flex-wrap justify-between text-base leading-9 text-[#4f4f4f] ">
               <p className=" m-2 min-h-28 w-[46%] rounded-xl border-2 px-6 py-3">
-                프로젝트 진행 중 미팅 :<br /> - {project.preMeetingMethod}
+                프로젝트 진행 중 미팅 <br /> - {project.preMeetingMethod}
               </p>
               <p className=" m-2 min-h-28 w-[46%] rounded-xl border-2 px-6 py-3">
-                진행 중 미팅 : <br />- {project.meetingMethod}
+                진행 중 미팅 <br />- {project.meetingMethod}
               </p>
               <p className=" m-2 min-h-28 w-[46%] rounded-xl border-2 px-6 py-3">
-                미팅 주기 : <br /> - {project.meetingFrequency}
+                미팅 주기 <br /> - {project.meetingFrequency}
               </p>
               <p className=" m-2 min-h-28 w-[46%] rounded-xl border-2 px-6 py-3">
-                회사 위치 : <br /> - {project.clientLocationCity}{' '}
+                회사 위치 <br /> - {project.clientLocationCity}{' '}
                 {project.clientLocationDistrict}
               </p>
             </div>
@@ -180,12 +267,15 @@ const MyProject: React.FC<MyProjectProps> = ({ project }) => {
               <p>{project.isFundingAvailableSub}</p>
             </div>
             <h5 className="text-lg">클라이언트 정보</h5>
-            <div className="text-base leading-8 text-[#4f4f4f]">
-              <p>{JSON.parse(project.applicantRequirements || '')}</p>
-              <p>{JSON.parse(project.applicantRequirementsSub || '')}</p>
+            <div className="whitespace-pre text-base leading-8 text-[#4f4f4f]">
+              <p> {applicantRequirements}</p>
+              <p className="py-1" />
+              <p>{applicantRequirementsSub}</p>
               <p>{project.isCollaborationTeamComposition}</p>
               <hr className="my-4 opacity-70" />
-              <h5 className="mb-3 text-lg  text-black">사전 검증 질문 :</h5>
+              <h5 className="mb-3 whitespace-pre text-lg text-black">
+                사전 검증 질문
+              </h5>
               <p> - {project.preliminaryVerificationQuestions}</p>
             </div>
           </div>

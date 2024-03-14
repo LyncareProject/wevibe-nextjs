@@ -38,7 +38,6 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: '위바이브 주식회사',
-    site: '@site',
     description:
       '위바이브는 유저의 경험 데이터가 차이를 만들어낸다고 믿습니다. 위바이브는 AI 기반으로 지속 발전 가능한 성장 모델을 발굴하여 새로운 경험과 가능성을 모색합니다.',
     images: [
